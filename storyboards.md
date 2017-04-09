@@ -6,7 +6,7 @@
 ![Image of Siru's second storyboard](https://github.com/princevietle/COGS121/blob/master/storyboards/storyboard%202.jpg)
 
 ### Timothy Choi
-#### Storyboard 1: 
+#### Storyboard 1: This application is a territory game. All your steps will be painted a color marking that you have been there. The person with the most land painted wins the game. Many mini games and ohter rules
 ![Image of Siru's first storyboard](https://github.com/princevietle/COGS121/blob/master/storyboards/17838759_10211115839545294_2750760_o.jpg)
-#### Storyboard 2: 
+#### Storyboard 2: This application let's a user host an event with limitations and other rules such as max people. Other users can see this event and click going to see if they want to go or see other events happening that day. 
 ![Image of Siru's second storyboard](https://github.com/princevietle/COGS121/blob/master/storyboards/17858449_10211115839105283_2047562010_o.jpg)
