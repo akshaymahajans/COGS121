@@ -16,3 +16,8 @@
 ![Prince's Storyboard 1](https://github.com/princevietle/COGS121/blob/master/storyboards/IMG_20170409_230137.jpg)
 #### Storyboard 2: This app will allow the user to view hiking trails around their location, sorted by difficulty.  The app can also display the exact path of the hiking trail and show the user any locations on the trail that require extra attention, such as stray animals or a beautiful spot to look at.
 ![Prince's Storyboard 2](https://github.com/princevietle/COGS121/blob/master/storyboards/IMG_20170410_000455.jpg)
+### Akshay Mahajan  
+#### Storyboard 1: The app allows a user to find other local bandmates to jam or play gigs with. This works for bands looking for individuals and individuals looking for bands alike.
+![Akshay's Storyboard 1](https://github.com/princevietle/COGS121/blob/master/storyboards/Storyboard1.jpg)
+#### Storyboard 2: This app will allow the user to find local restaurants offering discounts. The user will enter their food and price point preferences upon creating an account, and then will always be notified if more expensive restaurants have food items in that price range, or if any restaurants are offering discounts.
+![Akshay's Storyboard 2](https://github.com/princevietle/COGS121/blob/master/storyboards/Storyboard2.jpg)
