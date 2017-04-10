@@ -14,3 +14,5 @@
 ### Prince Le
 #### Storyboard 1: The app contains a map which locates all the water fountains/refillable water stations around UCSD.  The user will be able to see how far a station is from their location, its water quality, and can navigate themselves to the exact location.
 ![Prince's Storyboard 1](https://github.com/princevietle/COGS121/blob/master/storyboards/IMG_20170409_230137.jpg)
+#### Storyboard 2: This app will allow the user to view hiking trails around their location, sorted by difficulty.  The app can also display the exact path of the hiking trail and show the user any locations on the trail that require extra attention, such as stray animals or a beautiful spot to look at.
+![Prince's Storyboard 2](https://github.com/princevietle/COGS121/blob/master/storyboards/IMG_20170410_000455.jpg)
