@@ -8,6 +8,11 @@ Storyboard: This storyboard is based on Akshay's idea about finding local discou
 About feedbacks: We got some feedbacks about original storyboard saying that this app idea is very similar to Yelp which also shows cheap restaurants to users. Therefore, we came up the unique feature to our app which is providing users with information about business discounts or sales around your real-time location. Also, our app can remind people about a discount that will end soon. Another feedback we got from milestone 2 is that our app should not only focus on food and we should give users more possibilities. We adopted this feedback to our new storyboard which now shows different kinds of deals in the area. Users can see the discount information about clothes stores, supermarkets, restaurants, etc.
 
 Proposed Project Features:
+- Display a map of a user's location and any stores near their location
+- Allow store owners to broadcast discounts to anyone nearby using this app within the store's radius
+- Display to the user a notification of a store's discount if they happen to be within its radius
+- Allow users to store discounts they find to their account for later use
+- Possibly a search function to see any existing discounts around them
 
 Team Programming Roles:
 
