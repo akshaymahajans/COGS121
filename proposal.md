@@ -15,7 +15,7 @@ Proposed Project Features:
 - Possibly a search function to see any existing discounts around them
 
 Team Programming Roles:
-Siru: Siru will be focusing on front end development/design of our project, developing the dashboard in which we embed our map interface. Prince: Prince will focus on integrating one sales API
-Tim: Tim will be responsible for being our resident maps expert. He will be working with the location-based API that we use (Google Maps or Hypertrack), and he will be programming the discount distance feature.
-Prince & Akshay: Both Prince and Akshay will focus on integrating various flash sale API's (https://www.programmableweb.com/api/weeddeals is one example) with the map interface. They will also be responsible for coding out the discount calendar feature. 
+- Siru: Siru will be focusing on front end development/design of our project, developing the dashboard in which we embed our map interface. 
+- Tim: Tim will be responsible for being our resident maps expert. He will be working with the location-based API that we use (Google Maps or Hypertrack), and he will be programming the discount distance feature.
+- Prince & Akshay: Both Prince and Akshay will focus on integrating various flash sale API's (https://www.programmableweb.com/api/weeddeals is one example) with the map interface. They will also be responsible for coding out the discount calendar feature. 
 
