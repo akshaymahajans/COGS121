@@ -10,4 +10,4 @@ Description: In my prototype, users can see several sales around their real-time
 
 ## Timothy Choi
 ![Image of Timothy's first storyboard](https://github.com/princevietle/COGS121/blob/master/prototypes/18012644_10211221353823085_2120377041_o.jpg)
-Description: 
+Description: This prototype shows the map and a list in the same page in accordacne to how close you are to the discounted posted in the map. Once oyu click it, directions will be given to you to that desried store with the discount. 
