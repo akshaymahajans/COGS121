@@ -8,3 +8,10 @@ Akshay Mahajan - Working on the wireframe for our current idea to make future we
 
 Timothy Choi - Added a template login screen 
 
+![Map screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/m5map.png)
+
+Description: Our current implementation of the map feature of our app.  Clicking on a marker will display a description in the form of a text box.
+
+![Login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/m5login.png)
+
+Description: Our planned login page after we finish implementing the core functionality.
