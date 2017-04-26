@@ -1,6 +1,6 @@
 Team Contribution:
 
-Siru A - Added the Google map implementation for our project
+Siru A - Added the Google map implementation for our project and added the user profile page.
 
 Prince Le - Polished the map and added markers and clickable text boxes associated with them
 
