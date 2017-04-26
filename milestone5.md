@@ -15,3 +15,7 @@ Description: Our current implementation of the map feature of our app.  Clicking
 ![Login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/m5login.png)
 
 Description: Our planned login page after we finish implementing the core functionality.
+
+![Profile screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/m5profile.png)
+
+Description: Our planned user's profile page where users can see the items they sell or bought. For items that are no longer available the background color will change to gray.
