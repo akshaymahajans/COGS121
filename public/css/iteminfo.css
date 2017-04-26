@@ -1,0 +1,22 @@
+
+#map-loading {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    margin-left: -60px;
+    margin-top: -300px;
+    z-index: 129;
+}
+
+#map-outer {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 92px);
+}
+
+#map {
+    height: 100%;
+}
+.location {
+  height: 300px;
+}
