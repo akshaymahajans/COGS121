@@ -16,13 +16,13 @@ DesignAtLarge/ixd-workshop-lost-and-found
     <body>
         <nav>SwiftSales</nav>
         <main>
-            <tab-section id="lost-tab-section" class="active">
+            <tab-section id="buy-tab-section" class="active">
                 <div id="map-outer">
                     <img id="map-loading" src="img/loading.svg" />
                     <div id="map"></div>
                 </div>
             </tab-section>
-            <tab-section id="found-tab-section">
+            <tab-section id="sell-tab-section">
                 <form id="found-form">
                     <h2>Sell an item</h2>
                     <label>Item: </label>
@@ -34,10 +34,26 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     <button type="submit">Post</button>
                 </form>
             </tab-section>
+            <tab-section id="profile-tab-section">
+<div id="topBar">
+    <a href ="#" id="load_home"> HOME </a>
+</div>
+<div id ="content">        
+</div>
+
+<script>
+$(document).ready( function() {
+    $("#load_home").on("click", function() {
+        $("#content").load("Login.html");
+    });
+});
+</script>
+            </tab-section>
         </main>
         <footer>
-            <tab id="lost-tab" class="active">Buy</tab>
-            <tab id="found-tab">Sell</tab>
+            <tab id="buy-tab" class="active">Buy</tab>
+            <tab id="sell-tab">Sell</tab>
+            <tab id="profile-tab">Profile</tab>
         </footer>
         <script>
             var map;
@@ -54,15 +70,10 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     });
                     var marker = new google.maps.Marker({
                         position: pos,
-                        icon: 'img/self.png',
                         map: map
                     });
                     var contentString = 
-                    '<h1 id="firstHeading" class="firstHeading">McDonalds</h1>'+
-                    '<div id="bodyContent">'+
-                    '<p><b>Software Engineer</b> - Looking for anyone </p>'+
-                    '<p>Website: <a href="www.mcdonalds.com">'+ 'www.mcdonalds.com</a> '+
-                    '</div>';
+                    '<h1 id="firstHeading" class="firstHeading">You are here!</h1>';
                     var infowindow = new google.maps.InfoWindow({
                       content: contentString
                     });   
@@ -115,25 +126,32 @@ DesignAtLarge/ixd-workshop-lost-and-found
                 if ($("#found-item").val() == "") {
                     alert("Please insert the name of the item");
                 }
-                if ($("#found-description").val() == "") {
+                else if ($("item-price").val() == "") {
+                    alert("Please insert the price of the item");
+                }
+                else if ($("#found-description").val() == "") {
                     alert("Please insert the description of the item");
                 }
-                randomClosePosition(function (pos) {
-                    ajax({
-                        url: "/ajax/found?action=post",
-                        type: "post",
-                        data: {
-                            name: $("#found-item").val(),
-                            description: $("#found-description").val(),
-                            lat: pos.lat,
-                            lng: pos.lng
-                        },
-                        success: function (data) {
-                            alert("Post Success!");
-                            window.location.reload();
-                        }
-                    });
-                });
+                else
+                {
+                  getGeoPosition(function (pos) {
+                      ajax({
+                          url: "/ajax/found?action=post",
+                          type: "post",
+                          data: {
+                              name: $("#found-item").val(),
+                              price: $("#item-price").val(),
+                              description: $("#found-description").val(),
+                              lat: pos.lat,
+                              lng: pos.lng
+                          },
+                          success: function (data) {
+                              alert("Post Success!");
+                              window.location.reload();
+                          }
+                      });
+                  });
+                }
             }
 
             function getGeoPosition(callback) {

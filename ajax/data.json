@@ -5,5 +5,12 @@
         "description": "In good condition! Only sat in it once!",
         "lat": 32.8829696,
         "lng": -117.2388678
+    },
+    {
+        "name": "Selling iClicker2",
+        "price": 30,
+        "description": "Good condition! Full battery and used rarely",
+        "lat": 32.8939696,
+        "lng": -117.2388678
     }
 ]
