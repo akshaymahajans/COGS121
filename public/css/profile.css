@@ -71,3 +71,6 @@ a,body {
 .items > * {
   margin: 10px 0;
 }
+#sold {
+  background: #FADBD8;
+}
