@@ -126,25 +126,32 @@ $(document).ready( function() {
                 if ($("#found-item").val() == "") {
                     alert("Please insert the name of the item");
                 }
-                if ($("#found-description").val() == "") {
+                else if ($("item-price").val() == "") {
+                    alert("Please insert the price of the item");
+                }
+                else if ($("#found-description").val() == "") {
                     alert("Please insert the description of the item");
                 }
-                randomClosePosition(function (pos) {
-                    ajax({
-                        url: "/ajax/found?action=post",
-                        type: "post",
-                        data: {
-                            name: $("#found-item").val(),
-                            description: $("#found-description").val(),
-                            lat: pos.lat,
-                            lng: pos.lng
-                        },
-                        success: function (data) {
-                            alert("Post Success!");
-                            window.location.reload();
-                        }
-                    });
-                });
+                else
+                {
+                  getGeoPosition(function (pos) {
+                      ajax({
+                          url: "/ajax/found?action=post",
+                          type: "post",
+                          data: {
+                              name: $("#found-item").val(),
+                              price: $("#item-price").val(),
+                              description: $("#found-description").val(),
+                              lat: pos.lat,
+                              lng: pos.lng
+                          },
+                          success: function (data) {
+                              alert("Post Success!");
+                              window.location.reload();
+                          }
+                      });
+                  });
+                }
             }
 
             function getGeoPosition(callback) {
