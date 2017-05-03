@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<style>
+
+.sale-label{
+	margin-top:30px;
+}
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+
+</style>
+<script>
++ function($) {
+    'use strict';
+    var dropZone = document.getElementById('drop-zone');
+    var uploadForm = document.getElementById('js-upload-form');
+
+    var startUpload = function(files) {
+        console.log(files)
+    }
+
+    uploadForm.addEventListener('submit', function(e) {
+        var uploadFiles = document.getElementById('js-upload-files').files;
+        e.preventDefault()
+
+        startUpload(uploadFiles)
+    })
+
+    dropZone.ondrop = function(e) {
+        e.preventDefault();
+        this.className = 'upload-drop-zone';
+
+        startUpload(e.dataTransfer.files)
+    }
+
+    dropZone.ondragover = function() {
+        this.className = 'upload-drop-zone drop';
+        return false;
+    }
+
+    dropZone.ondragleave = function() {
+        this.className = 'upload-drop-zone';
+        return false;
+    }
+</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<h1 class="text-center"> SwiftSales </h1>		
+	</div>
+	<hr>
+	<div class="container product">
+		<h3 class="text-center"> Product Information </h3>
+		<div class="sale-label">
+			<label> Name: </label> <input>	
+		</div>
+		<div class="sale-label">
+		<label> Description: </label> <input>
+		</div>
+		<div class="sale-label">
+		<label> Category: </label> 
+				<select class="product-category" multiple>
+  					<option>Food</option>
+				  	<option>Make-Up</option>
+				  	<option>Electronics</option>
+				</select>
+
+		</div>
+		<div class="sale-label">
+		<label> Price: </label> $<input>
+		</div>
+		<div class="sale-label">
+		<label> Sale Duration: </label>
+				<select class="product-category">
+  					<option>1 hour</option>
+				  	<option>2 hours</option>
+				  	<option>3 hours</option>
+				  	<option>4 hours</option>
+				  	<option>5 hours</option>
+				  	<option>6 hours</option>
+				  	<option>7 hours</option>
+				  	<option>8 hours</option>
+				  	<option>9 hours</option>
+				  	<option>10 hours</option>
+				  	<option>11 hours</option>
+				  	<option>12 hours</option>
+				 </select>
+		</div>
+		<div class="sale-label">
+		<label> Your Location: </label> 
+			<div>
+			<input type="radio"> Use My Current Location
+			</div>
+			<div>
+			<input type="radio"> Use another location 
+			</div>
+		<div>
+			<button>Post</button>
+		</div>
+		<div>
+			<button>Cancel</button>
+		</div>
+	</div>
+
+
+	<div class="container-fluid">
+		<h4>Select files from your computer</h4>
+          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+            <div class="form-inline">
+              <div class="form-group">
+                <input type="file" name="files[]" id="js-upload-files" multiple>
+              </div>
+              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+            </div>
+          </form>
+
+          <!-- Drop Zone -->
+          <h4>Or drag and drop files below</h4>
+          <div class="upload-drop-zone" id="drop-zone">
+            Just drag and drop files here
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+              <span class="sr-only">60% Complete</span>
+            </div>
+          </div>
+
+          <!-- Upload Finished -->
+          <div class="js-upload-finished">
+            <h3>Processed files</h3>
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-01.jpg</a>
+              <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
+            </div>
+          </div>
+          </div>
+      </div>
+</body>
+</html>
