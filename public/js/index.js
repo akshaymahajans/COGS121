@@ -9,10 +9,12 @@ $("#found-form").submit(function () {
 });
 
 function ajax(option) {
+    var originalSuccess = option.success;
     option.success = function (result) {
         var data = JSON.parse(result);
         if (data.code == 0) {
-            option.success(data.content);
+            originalSuccess(data.content);
+
         }
         else {
             alert("Error " + data.code + ": " + data.msg);
@@ -23,3 +25,4 @@ function ajax(option) {
     };
     $.ajax(option);
 }
+

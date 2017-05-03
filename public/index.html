@@ -14,14 +14,31 @@ DesignAtLarge/ixd-workshop-lost-and-found
         <script src="js/jquery.js"></script>
     </head>
     <body>
-        <nav>TBD</nav>
+        <nav>SwiftSales</nav>
         <main>
-            <div id="map-outer">
-                <img id="map-loading" src="img/loading.svg" />
-                <div id="map"></div>
-            </div>
+            <tab-section id="lost-tab-section" class="active">
+                <div id="map-outer">
+                    <img id="map-loading" src="img/loading.svg" />
+                    <div id="map"></div>
+                </div>
+            </tab-section>
+            <tab-section id="found-tab-section">
+                <form id="found-form">
+                    <h2>Sell an item</h2>
+                    <label>Item: </label>
+                    <input id="found-item" type="text" placeholder="Keyboard" />
+                    <label>Price: </label>
+                    <input id="item-price" type="text" placeholder="90" />
+                    <label>Description: </label>
+                    <textarea id="found-description" placeholder="Good condition!"></textarea>
+                    <button type="submit">Post</button>
+                </form>
+            </tab-section>
         </main>
-
+        <footer>
+            <tab id="lost-tab" class="active">Buy</tab>
+            <tab id="found-tab">Sell</tab>
+        </footer>
         <script>
             var map;
 
@@ -31,6 +48,9 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 15,
                         center: pos
+                    });
+                    map.addListener(map, "click", function(event) {
+                    infowindow.close();
                     });
                     var marker = new google.maps.Marker({
                         position: pos,
@@ -60,41 +80,59 @@ DesignAtLarge/ixd-workshop-lost-and-found
                   url: "/ajax/lost?action=get",
                   type: "get",
                   success: function (data) {
-                      data.forEach(function (lost) {
+                      data.forEach(function (sale) {
+                        /*
                           var item = new google.maps.InfoWindow;
                           item.setPosition({lat: lost.lat, lng: lost.lng});
                           item.setContent(lost.name);
                           item.open(map);
+                          */
+                        var newpos = {lat: sale.lat, lng: sale.lng};
+                        var marker = new google.maps.Marker({
+                            position: newpos,
+                            icon: 'img/self.png',
+                            map: map
+                        });
+                        var saleinfo = 
+                        '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
+                        '<div id="body">'+
+                        '<p><b>Price:</b> $'+sale.price+'</p>'+
+                        '<p>'+sale.description+'</p>'+
+                        '</div>';
+                        var infowindow = new google.maps.InfoWindow({
+                          content: saleinfo
+                        });   
+
+                        marker.addListener('click', function() {
+                          infowindow.open(map, marker);
+                        });
                       });
                   }
               });
             }
 
             function postFound() {
-                var name, description;
-                if ((name = $("#found-item").val()) == "") {
+                if ($("#found-item").val() == "") {
                     alert("Please insert the name of the item");
                 }
-                if ((description = $("#found-description").val()) == "") {
+                if ($("#found-description").val() == "") {
                     alert("Please insert the description of the item");
                 }
                 randomClosePosition(function (pos) {
-                    // TODO: Post the information
                     ajax({
-                      url: "/ajax/found?action=post",
-                      type: "post",
-                      data: {
-                          name: $("#found-item").val(),
-                          description: $("#found-description").val(),
-                          lat: pos.lat,
-                          lng: pos.lng
-                      },
-                success: function (data) {
-                          alert("Post Success!");
-                          window.location.reload();
-                      }
-                  });
-
+                        url: "/ajax/found?action=post",
+                        type: "post",
+                        data: {
+                            name: $("#found-item").val(),
+                            description: $("#found-description").val(),
+                            lat: pos.lat,
+                            lng: pos.lng
+                        },
+                        success: function (data) {
+                            alert("Post Success!");
+                            window.location.reload();
+                        }
+                    });
                 });
             }
 
