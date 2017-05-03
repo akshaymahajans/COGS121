@@ -10,3 +10,8 @@ Code the main map interface. Added buy and sell page which allows user to post a
 
 Akshay:
 Code the "Sell" page which lets user enter information about the item they want to sell.
+
+
+![Map screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/m7app.png)
+
+Description: Our current implementation of the map feature of our app.  You can add a sale entry and it will display on the map.  There are tabs to navigate through the app and contains a login page (currently being worked on).
