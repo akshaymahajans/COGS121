@@ -36,9 +36,9 @@ DesignAtLarge/ixd-workshop-lost-and-found
             </tab-section>
             <tab-section id="profile-tab-section">
 <div id="topBar">
-    <a href ="#" id="load_home"> HOME </a>
+    <a href ="itemBought.html" id="load_home">Home</a>
 </div>
-<div id ="content">        
+<div id ="content">
 </div>
 
 <script>
@@ -72,17 +72,17 @@ $(document).ready( function() {
                         position: pos,
                         map: map
                     });
-                    var contentString = 
+                    var contentString =
                     '<h1 id="firstHeading" class="firstHeading">You are here!</h1>';
                     var infowindow = new google.maps.InfoWindow({
                       content: contentString
-                    });   
+                    });
 
                     marker.addListener('click', function() {
                       infowindow.open(map, marker);
                     });
                     loadLost();
-                });         
+                });
           }
 
             function loadLost() {
@@ -104,7 +104,7 @@ $(document).ready( function() {
                             icon: 'img/self.png',
                             map: map
                         });
-                        var saleinfo = 
+                        var saleinfo =
                         '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
                         '<div id="body">'+
                         '<p><b>Price:</b> $'+sale.price+'</p>'+
@@ -112,7 +112,7 @@ $(document).ready( function() {
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
-                        });   
+                        });
 
                         marker.addListener('click', function() {
                           infowindow.open(map, marker);
