@@ -14,11 +14,12 @@ DesignAtLarge/ixd-workshop-lost-and-found
         <script src="js/jquery.js"></script>
     </head>
     <body>
-        <nav>SwiftSales</nav>
+      <nav>SwiftSales</nav>
         <main>
             <tab-section id="buy-tab-section" class="active">
                 <div id="map-outer">
                     <img id="map-loading" src="img/loading.svg" />
+                    <div id="right-panel"></div>
                     <div id="map"></div>
                 </div>
             </tab-section>
@@ -27,6 +28,8 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     <h2>Sell an item</h2>
                     <label>Item: </label>
                     <input id="found-item" type="text" placeholder="Keyboard" />
+                    <label>Location: </label>
+                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                     <label>Price: </label>
                     <input id="item-price" type="text" placeholder="90" />
                     <label>Description: </label>
@@ -40,6 +43,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 </div>
 <div id ="content">
 </div>
+
 
 <script>
 $(document).ready( function() {
@@ -57,14 +61,22 @@ $(document).ready( function() {
         </footer>
         <script>
             var map;
+          var directionsService;
+          var directionsDisplay;
+          var myplace;
 
             function initMap() {
                 $("#map-loading").fadeOut();
                 getGeoPosition(function (pos) {
+                    directionsService = new google.maps.DirectionsService;
+                    directionsDisplay = new google.maps.DirectionsRenderer;
                     map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 15,
                         center: pos
                     });
+                    directionsDisplay.setMap(map);
+                    directionsDisplay.setPanel(document.getElementById('right-panel'));
+
                     map.addListener(map, "click", function(event) {
                     infowindow.close();
                     });
@@ -82,7 +94,74 @@ $(document).ready( function() {
                       infowindow.open(map, marker);
                     });
                     loadLost();
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            //TODO: Currently creates a marker on the map for each result, do we need it?
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+            myplace = place.geometry.location;
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+
+                    //route(request:DirectionsRequest, callback:function(DirectionsResult, DirectionsStatus)));
+                    //calculateAndDisplayRoute(directionsService, directionsDisplay);
+                    //calcRoute();
+
                 });
+
           }
 
             function loadLost() {
@@ -109,6 +188,7 @@ $(document).ready( function() {
                         '<div id="body">'+
                         '<p><b>Price:</b> $'+sale.price+'</p>'+
                         '<p>'+sale.description+'</p>'+
+                        '<button onclick="calcRoute()"> WASSUP </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -142,8 +222,9 @@ $(document).ready( function() {
                               name: $("#found-item").val(),
                               price: $("#item-price").val(),
                               description: $("#found-description").val(),
-                              lat: pos.lat,
-                              lng: pos.lng
+                              // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
+                              lat: myplace.lat,
+                              lng: myplace.lng
                           },
                           success: function (data) {
                               alert("Post Success!");
@@ -168,15 +249,40 @@ $(document).ready( function() {
 
             }
 
-            function randomClosePosition(callback) {
-                getGeoPosition(function (pos) {
-                    pos.lat += -0.01 + Math.random() * 0.02;
-                    pos.lng += -0.01 + Math.random() * 0.02;
-                    callback(pos);
-                });
-            }
+
+
+      function calcRoute(sale) {
+                    //var org = new google.maps.LatLng ( 32.8829696, -117.2388678);
+                    //var dest = new google.maps.LatLng ( 32.8939696,-117.2388678);
+                    /*
+        directionsService.route({
+          origin: "chicago, il",
+          destination: "st louis, mo",
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+*/
+
+  var start = new google.maps.LatLng ( 32.8829696, -117.2388678);
+  var end = new google.maps.LatLng ( 32.8939696,-117.2388678);
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: 'DRIVING'
+  };
+  directionsService.route(request, function(result, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(result);
+    }
+  });
+      }
         </script>
         <script src="js/index.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap&libraries=places"></script>
     </body>
 </html>
