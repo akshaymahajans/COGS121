@@ -1,3 +1,9 @@
+Prince Le: This is the point of view as a customer, where they can only interact with promotions by buying them.  The user can see an available promotion by clicking on a specific marker in the map or by clicking on the Listings tab in the hamburger menu, which shows all current promotions around the user's area.  The user can also change their login information, view their sales that they saved for later, or view the history of the items they have bought.
+
+![Customer POV](https://github.com/princevietle/COGS121/blob/master/screenshots/IMG_20170508_143751.jpg)
+![Customer POV 2](https://github.com/princevietle/COGS121/blob/master/screenshots/IMG_20170508_143801.jpg)
+
+
 Timothy Choi: This is the register log. In this UI they are able to register on the smae page as a customer or merchant. If they choose merchat they later choose if they are local or chain. If they are a customer they maybe choose the discount they would like to see in their application.
 
 ![Register](https://github.com/princevietle/COGS121/blob/master/screenshots/18379420_10211389644910257_1599153141_o.jpg)
