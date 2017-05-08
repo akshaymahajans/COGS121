@@ -6,7 +6,9 @@ Prince Le: This is the point of view as a customer, where they can only interact
 
 Siru A: 
 
-![Merchant POV]()
+![Merchant POV](https://github.com/princevietle/COGS121/blob/master/screenshots/18379325_1876753602583021_1790764153_o.jpg)
+![Merchant POV 2](https://github.com/princevietle/COGS121/blob/master/screenshots/18426278_1876753619249686_1799522882_o.jpg)
+
 
 Timothy Choi: This is the register log. In this UI they are able to register on the smae page as a customer or merchant. If they choose merchat they later choose if they are local or chain. If they are a customer they maybe choose the discount they would like to see in their application.
 
