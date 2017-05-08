@@ -4,7 +4,8 @@ Prince Le: This is the point of view as a customer, where they can only interact
 ![Customer POV 2](https://github.com/princevietle/COGS121/blob/master/screenshots/IMG_20170508_143801.jpg)
 
 
-Siru A: 
+Siru A: The prototype is to show the app from a merchant view. After login, the merchant can see the map window where they can learn where their own promotions are and how many business promotions are around them. They can create a new promotion post by clicking the "add" button on the upper right. The menu bar on the left can direct them to other pages including their profile and the page that lists their promotions. They are able to see the status of their promotions by going to the promotion page.
+
 
 ![Merchant POV](https://github.com/princevietle/COGS121/blob/master/screenshots/18379325_1876753602583021_1790764153_o.jpg)
 ![Merchant POV 2](https://github.com/princevietle/COGS121/blob/master/screenshots/18426278_1876753619249686_1799522882_o.jpg)
