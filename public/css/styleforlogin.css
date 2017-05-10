@@ -189,7 +189,7 @@ img { max-width: 100%; }
 .login, .register {
   margin-top: 200px;
 }
-input[type="input"], input[type="number"], input[type="datetime-local"]{
+input[type="input"], input[type="number"]{
   background: rgba(0, 0, 0, 0.3);
   border: 1px rgba(255, 255, 255, 0.3);
 }
@@ -201,33 +201,4 @@ select[type="business-type"]{
 }
 .profile-info {
   margin-bottom: 5px;
-}
-legend {
-  font-size: 22px;
-  color: #fff;
-  text-align: center;
-  padding-bottom: 10px;
-}
-.create-promotion, .create-profile {
-  margin-top: 50px;
-}
-.form-inline {
-  text-align: left;
-}
-.form_body {
-  display: flex;
-  justify-content: center;
-}
-label {
-  color: snow;
-  font-weight: lighter;
-}
-.option2 {
-  float: right;
-}
-#pac-input {
-  float: right;
-}
-#cancelbtn {
-  float: right;
 }
