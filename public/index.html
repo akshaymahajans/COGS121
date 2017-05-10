@@ -89,11 +89,14 @@ $(document).ready( function() {
 //TODO: Remove markers???
 //TODO: Route from current location to a marker
 //TODO: Store new marker into json to access its location later??
+//TODO: Reroute when clicking on a new location
 
             var map;
           var directionsService;
           var directionsDisplay;
           var myplace;
+          var startLat;
+          var startLng;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -218,7 +221,7 @@ $(document).ready( function() {
                         '<div id="body">'+
                         '<p><b>Price:</b> $'+sale.price+'</p>'+
                         '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute()"> WASSUP </button>'+
+                        '<button onclick="calcRoute(\''+sale+'\')"> WASSUP </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -273,6 +276,8 @@ $(document).ready( function() {
                 //      lng: <LONGITUDE>
                 //  }
                 navigator.geolocation.getCurrentPosition(function (info) {
+                  startLat = info.coords.latitude;
+                  startLng = info.coords.longitude;
                   callback({lat: info.coords.latitude, lng: info.coords.longitude});
                   /*callback is a function*/
                 });
@@ -298,8 +303,8 @@ $(document).ready( function() {
         });
 */
 
-  var start = new google.maps.LatLng ( 32.8829696, -117.2388678);
-  var end = new google.maps.LatLng ( 32.8939696,-117.2388678);
+  var start = new google.maps.LatLng ( startLat, startLng);
+  var end = new google.maps.LatLng ( sale.lat, sale.lng);
   var request = {
     origin: start,
     destination: end,
