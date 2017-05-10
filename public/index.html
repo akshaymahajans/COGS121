@@ -230,7 +230,7 @@ $(document).ready( function() {
                         '<div id="body">'+
                         '<p><b>Price:</b> $'+sale.price+'</p>'+
                         '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute(\''+newpos+'\')"> WASSUP </button>'+
+                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> WASSUP </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -296,10 +296,10 @@ $(document).ready( function() {
 
 
 
-      function calcRoute(newpos) {
+      function calcRoute(saleLat, saleLng) {
 
   var start = new google.maps.LatLng ( startLat, startLng);
-  var end = new google.maps.LatLng ( newpos.lat, newpos.lng);
+  var end = new google.maps.LatLng ( saleLat, saleLng);
   var request = {
     origin: start,
     destination: end,
