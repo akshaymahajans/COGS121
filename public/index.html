@@ -91,12 +91,13 @@ $(document).ready( function() {
 //TODO: Store new marker into json to access its location later??
 //TODO: Reroute when clicking on a new location
 
-            var map;
+          var map;
           var directionsService;
           var directionsDisplay;
           var myplace;
           var startLat;
           var startLng;
+          var i = 1;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -108,25 +109,36 @@ $(document).ready( function() {
                         center: pos
                     });
                     directionsDisplay.setMap(map);
+                    //TODO: MAKE THE PANEL ONLY APPEAR WHEN SOMEONE CLICKS FOR DIRECTIONS, OTHERWISE DON'T HAVE THE PANEL VISIBLE
                     directionsDisplay.setPanel(document.getElementById('right-panel'));
 
+                    //TODO: CODE NOT WORKING. WE WANT TO CLOSE ALL INFO WINDOWS WHEN YOU CLICK ANYWHERE ON THE MAP
                     map.addListener(map, "click", function(event) {
                     infowindow.close();
                     });
+
+                    // Creates a marker at your current location
                     var marker = new google.maps.Marker({
                         position: pos,
                         map: map
                     });
+
+                    // Creates an infow window that says where you are
                     var contentString =
                     '<h1 id="firstHeading" class="firstHeading">You are here!</h1>';
                     var infowindow = new google.maps.InfoWindow({
                       content: contentString
                     });
 
+                    // Opens the infowindow associated with the marker when clicked
                     marker.addListener('click', function() {
                       infowindow.open(map, marker);
                     });
+
+                    // Loads all the data from the json file
                     loadLost();
+
+        // SEARCH BOX CODE
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
@@ -189,16 +201,12 @@ $(document).ready( function() {
           map.fitBounds(bounds);
         });
 
-                    //route(request:DirectionsRequest, callback:function(DirectionsResult, DirectionsStatus)));
-                    //calculateAndDisplayRoute(directionsService, directionsDisplay);
-                    //calcRoute();
-
                 });
 
           }
 
+            // Loads all the data from the json file
             function loadLost() {
-                // TODO: Load the lost panel
                 ajax({
                   url: "/ajax/lost?action=get",
                   type: "get",
@@ -216,12 +224,13 @@ $(document).ready( function() {
                             icon: 'img/self.png',
                             map: map
                         });
+                        //TODO MAKE THIS STUFF LOOK BEAUTIFUL
                         var saleinfo =
                         '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
                         '<div id="body">'+
                         '<p><b>Price:</b> $'+sale.price+'</p>'+
                         '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute(\''+sale+'\')"> WASSUP </button>'+
+                        '<button onclick="calcRoute(\''+newpos+'\')"> WASSUP </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -257,7 +266,8 @@ $(document).ready( function() {
                               description: $("#found-description").val(),
                               // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
                               lat: myplace.lat,
-                              lng: myplace.lng
+                              lng: myplace.lng,
+                              id: 1
                           },
                           success: function (data) {
                               alert("Post Success!");
@@ -286,25 +296,10 @@ $(document).ready( function() {
 
 
 
-      function calcRoute(sale) {
-                    //var org = new google.maps.LatLng ( 32.8829696, -117.2388678);
-                    //var dest = new google.maps.LatLng ( 32.8939696,-117.2388678);
-                    /*
-        directionsService.route({
-          origin: "chicago, il",
-          destination: "st louis, mo",
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-*/
+      function calcRoute(newpos) {
 
   var start = new google.maps.LatLng ( startLat, startLng);
-  var end = new google.maps.LatLng ( 32.8939696,-117.2388678);
+  var end = new google.maps.LatLng ( newpos.lat, newpos.lng);
   var request = {
     origin: start,
     destination: end,
