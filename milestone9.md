@@ -14,5 +14,5 @@
 ![Image of map screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/mapscreenshot.png)
 ![Image of route screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/milestone9route1.png)
 ![Image of route result screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/milestone9route2.png)
-* #### Akshay: 
-* #### Timothy: 
+* #### Akshay: Looking for templates for UI
+* #### Timothy: Looking into setting up a database
