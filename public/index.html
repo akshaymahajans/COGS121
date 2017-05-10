@@ -27,11 +27,11 @@ DesignAtLarge/ixd-workshop-lost-and-found
             <tab-section id="sell-tab-section">
                 <form id="found-form">
                     <h2>Sell an item</h2>
-                    <label>Item: </label>
+                    <label>Business: </label>
                     <input id="found-item" type="text" placeholder="Keyboard" />
                     <label>Location: </label>
                     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                    <label>Price: </label>
+                    <label>Discount (% off): </label>
                     <input id="item-price" type="text" placeholder="90" />
                     <label>Description: </label>
                     <textarea id="found-description" placeholder="Good condition!"></textarea>
@@ -87,8 +87,6 @@ $(document).ready( function() {
 
 //TODO: Click on map to remove all infoboxes
 //TODO: Remove markers???
-//TODO: Route from current location to a marker
-//TODO: Store new marker into json to access its location later??
 //TODO: Reroute when clicking on a new location
 
           var map;
@@ -228,9 +226,9 @@ $(document).ready( function() {
                         var saleinfo =
                         '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
                         '<div id="body">'+
-                        '<p><b>Price:</b> $'+sale.price+'</p>'+
+                        '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
                         '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> WASSUP </button>'+
+                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> Go here! </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -267,7 +265,6 @@ $(document).ready( function() {
                               // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
                               lat: myplace.lat,
                               lng: myplace.lng,
-                              id: 1
                           },
                           success: function (data) {
                               alert("Post Success!");

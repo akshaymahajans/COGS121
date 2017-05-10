@@ -1,16 +1,1 @@
-[
-    {
-        "name": "Selling couch",
-        "price": 90,
-        "description": "In good condition! Only sat in it once!",
-        "lat": 32.8829696,
-        "lng": -117.2388678
-    },
-    {
-        "name": "Selling iClicker2",
-        "price": 30,
-        "description": "Good condition! Full battery and used rarely",
-        "lat": 32.8939696,
-        "lng": -117.2388678
-    }
-]
+[{"name":"YogurtWorld","price":25,"description":"On all yogurt on 5/10/17!","lat":32.8792035,"lng":-117.23599209999998},{"name":"Sunshine Market","price":10,"description":"All coffee before noon!","lat":32.8796939,"lng":-117.23594249999996},{"name":"Regents Pizzeria","price":25,"description":"Discounts on all deep dish pizzas! Celebrating our 10th year anniversary!  ","lat":32.8733956,"lng":-117.2180492}]
