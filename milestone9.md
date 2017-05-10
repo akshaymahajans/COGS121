@@ -10,6 +10,9 @@
   Made the landing pages, login and register pages for both customers and merchants. Made the navigation button on the map.
 ![Image of Siru's screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/Siru-milestone9.jpg)
 * #### Prince: 
+  Added routing from user's current location to a marker on the map, and displays directions on how to reach the destination on the right side of the map.  Added searching for a location through Google Maps as a search box so users can find a location without requiring exact coordinates.  In addition to searching, users can now place markers at a location instead of just their current location. 
 ![Image of map screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/mapscreenshot.png)
+![Image of route screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/milestone9route1.jpg)
+![Image of route result screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/milestone9route2.jpg)
 * #### Akshay: 
 * #### Timothy: 
