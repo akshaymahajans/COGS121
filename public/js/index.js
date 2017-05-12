@@ -26,3 +26,25 @@ function ajax(option) {
     $.ajax(option);
 }
 
+
+//Fire Base Json File Adding
+var found-item = ducment.getElementById("found-item");
+var pac-input = ducment.getElementById("pac-input");
+var item-price = ducment.getElementById("item-price");
+var found-description = ducment.getElementById("found-description");
+
+function submitClick(){
+    var firebaseRef = firebase.database().ref("discounts");
+
+    firebaseRef.push({
+        name: found-item,
+        price: item-price,
+        description: found-description,
+        location: pac-input
+    })
+
+}
+
+
+
+

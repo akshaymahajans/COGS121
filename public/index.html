@@ -30,12 +30,12 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     <label>Business: </label>
                     <input id="found-item" type="text" placeholder="Keyboard" />
                     <label>Location: </label>
-                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                    <input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
                     <label>Discount (% off): </label>
                     <input id="item-price" type="text" placeholder="90" />
                     <label>Description: </label>
                     <textarea id="found-description" placeholder="Good condition!"></textarea>
-                    <button type="submit">Post</button>
+                    <button type="submit" onclick="submitCLick()" >Post</button>
                 </form>
             </tab-section>
             <tab-section id="profile-tab-section">
@@ -44,6 +44,25 @@ DesignAtLarge/ixd-workshop-lost-and-found
 </div>
 <div id ="content">
 </div>
+
+<!-- Fire Base Code -->
+
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAVrJAqzGH0IUVXHvorYwHwI5KLnQMzxC0",
+    authDomain: "tbd-cogs-121.firebaseapp.com",
+    databaseURL: "https://tbd-cogs-121.firebaseio.com",
+    projectId: "tbd-cogs-121",
+    storageBucket: "tbd-cogs-121.appspot.com",
+    messagingSenderId: "277014924039"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<!-- End of Fire Base -->
 
 
 <script>
@@ -271,6 +290,10 @@ $(document).ready( function() {
                               window.location.reload();
                           }
                       });
+
+
+
+
                   });
                 }
             }
