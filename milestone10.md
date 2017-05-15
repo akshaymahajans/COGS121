@@ -1,1 +1,1 @@
-
+SwiftSales is an application that allows customers and local businesses to connect through temporary, location-based discounts. Currently, similar applications are only oriented towards the customer - we are an integrated solution for both the merchant and the customer. We offer customers a birds-eye view of their discount landscape, while providing merchants a streamlined resource to manage a sale from start to finish - minimizing costs and maximizing engagement between both parties. Ultimately, customers can find swift sales and merchants can sell swiftly. 
