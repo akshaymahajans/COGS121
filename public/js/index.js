@@ -26,7 +26,7 @@ function ajax(option) {
     $.ajax(option);
 }
 
-
+/*
 //Fire Base Json File Adding
 var found-item = ducment.getElementById("found-item");
 var pac-input = ducment.getElementById("pac-input");
@@ -44,7 +44,7 @@ function submitClick(){
     })
 
 }
-
+*/
 
 
 
