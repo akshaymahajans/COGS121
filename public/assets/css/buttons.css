@@ -301,8 +301,8 @@
 
 .button-caution,
 .button-caution-flat {
-  background-color: #FF4351;
-  border-color: #FF4351;
+  background-color: #efa1aa;
+  border-color: #efa1aa;
   color: #FFF; }
   .button-caution:visited,
   .button-caution-flat:visited {
@@ -310,16 +310,38 @@
   .button-caution:hover, .button-caution:focus,
   .button-caution-flat:hover,
   .button-caution-flat:focus {
-    background-color: #ff7680;
-    border-color: #ff7680;
+    background-color: #edabb1;
+    border-color: #edabb1;
     color: #FFF; }
   .button-caution:active, .button-caution.active, .button-caution.is-active,
   .button-caution-flat:active,
   .button-caution-flat.active,
   .button-caution-flat.is-active {
-    background-color: #f64c59;
-    border-color: #f64c59;
-    color: #ff1022; }
+    background-color: #ed939d;
+    border-color: #ed939d;
+    color: #facbd1; }
+
+.button-blue,
+.button-blue-flat {
+  background-color: #9ad9e3;
+  border-color: #9ad9e3;
+  color: #FFF; }
+  .button-blue:visited,
+  .button-blue-flat:visited {
+color: #FFF; }
+  .button-blue:hover, .button-blue:focus,
+  .button-blue-flat:hover,
+  .button-blue-flat:focus {
+background-color: #a8e0e9;
+border-color: #a8e0e9;
+color: #FFF; }
+  .button-blue:active, .button-blue.active, .button-blue.is-active,
+  .button-blue-flat:active,
+  .button-blue-flat.active,
+  .button-blue-flat.is-active {
+background-color: #90d6e0;
+border-color: #90d6e0;
+    color: #3a94c7; }
 
 .button-royal,
 .button-royal-flat {
@@ -572,7 +594,7 @@
   .button-border.button-caution, .button-caution.button-border-thin, .button-caution.button-border-thick,
   .button-border-thin.button-caution,
   .button-border-thick.button-caution {
-    color: #FF4351; }
+    color: #efa1aa; }
     .button-border.button-caution:hover, .button-caution.button-border-thin:hover, .button-caution.button-border-thick:hover, .button-border.button-caution:focus, .button-caution.button-border-thin:focus, .button-caution.button-border-thick:focus,
     .button-border-thin.button-caution:hover,
     .button-border-thin.button-caution:focus,
@@ -683,7 +705,7 @@
   .button-borderless.button-highlight {
     color: #FEAE1B; }
   .button-borderless.button-caution {
-    color: #FF4351; }
+    color: #efa1aa; }
   .button-borderless.button-royal {
     color: #7B72E9; }
   .button-borderless.button-giant {
@@ -1045,24 +1067,24 @@
             box-shadow: 0 0 0 rgba(254, 174, 27, 0.3); } }
 @-webkit-keyframes glowing-caution {
   from {
-    -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3); }
+    -webkit-box-shadow: 0 0 0 rgba(246, 139, 147, 0.3);l
+            box-shadow: 0 0 0 rgba(246, 139, 147, 0.3); }
   50% {
-    -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8); }
+    -webkit-box-shadow: 0 0 20px rgba(246, 139, 147, 0.8);
+            box-shadow: 0 0 20px rgba(246, 139, 147, 0.8); }
   to {
-    -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3); } }
+    -webkit-box-shadow: 0 0 0 rgba(246, 139, 147, 0.3);
+            box-shadow: 0 0 0 rgba(246, 139, 147, 0.3); } }
 @keyframes glowing-caution {
   from {
-    -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3); }
+    -webkit-box-shadow: 0 0 0 rgba(246, 139, 147, 0.3);
+            box-shadow: 0 0 0 rgba(246, 139, 147, 0.3); }
   50% {
-    -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8); }
+    -webkit-box-shadow: 0 0 20px rgba(246, 139, 147, 0.8);
+            box-shadow: 0 0 20px rgba(246, 139, 147, 0.8); }
   to {
-    -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3); } }
+    -webkit-box-shadow: 0 0 0 rgba(246, 139, 147, 0.3);
+            box-shadow: 0 0 0 rgba(246, 139, 147, 0.3); } }
 @-webkit-keyframes glowing-royal {
   from {
     -webkit-box-shadow: 0 0 0 rgba(123, 114, 233, 0.3);
@@ -1083,6 +1105,27 @@
   to {
     -webkit-box-shadow: 0 0 0 rgba(123, 114, 233, 0.3);
             box-shadow: 0 0 0 rgba(123, 114, 233, 0.3); } }
+
+@-webkit-keyframes glowing-blue {
+  from {
+    -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+            box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); }
+  50% {
+    -webkit-box-shadow: 0 0 20px rgba(27, 154, 247, 0.6);
+            box-shadow: 0 0 20px rgba(27, 154, 247, 0.6); }
+  to {
+    -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+            box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); } }
+@keyframes glowing-primary {
+  from {
+    -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+            box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); }
+  50% {
+    -webkit-box-shadow: 0 0 20px rgba(27, 154, 247, 0.6);
+            box-shadow: 0 0 20px rgba(27, 154, 247, 0.6); }
+  to {
+    -webkit-box-shadow: 0 0 0 rgba(27, 154, 247, 0.3);
+            box-shadow: 0 0 0 rgba(27, 154, 247, 0.3); } }
 /*
 * Glowing Buttons Base Styes
 *
@@ -1127,6 +1170,9 @@
 .button-glow.button-royal {
   -webkit-animation-name: glowing-royal;
           animation-name: glowing-royal; }
+.button-glow.button-blue {
+  -webkit-animation-name: glowing-blue;
+          animation-name: glowing-blue; }
 
 /*
 * Dropdown menu buttons
