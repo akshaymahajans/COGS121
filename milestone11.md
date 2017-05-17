@@ -5,3 +5,9 @@ Akshay: Created storage system for both customer and merchant profiles.
 Prince: Coded UI for customer profile and customer logs, and assisting Akshay with the storage system.
 
 Screenshots:
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/01.png)
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/02.png)
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/03.png)
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/04.png)
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/05.png)
+![login screenshot](https://github.com/princevietle/COGS121/blob/master/screenshots/06.png)
