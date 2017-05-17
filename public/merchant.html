@@ -90,26 +90,215 @@ $(document).ready( function() {
 //TODO: Reroute when clicking on a new location
 
           var map;
+          var directionsService;
+          var directionsDisplay;
+          var myplace;
+          var startLat;
+          var startLng;
           var heatmap;
 
-         function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
+            function initMap() {
+                $("#map-loading").fadeOut();
+                getGeoPosition(function (pos) {
+                    directionsService = new google.maps.DirectionsService;
+                    directionsDisplay = new google.maps.DirectionsRenderer;
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 15,
           center: {lat: 37.775, lng: -122.434},
-          mapTypeId: 'satellite'
+                    });
+
+                    heatmap = new google.maps.visualization.HeatmapLayer({
+                      data: getPoints(),
+                      map: map
+                    });
+
+                    directionsDisplay.setMap(map);
+                    //TODO: MAKE THE PANEL ONLY APPEAR WHEN SOMEONE CLICKS FOR DIRECTIONS, OTHERWISE DON'T HAVE THE PANEL VISIBLE
+                    directionsDisplay.setPanel(document.getElementById('right-panel'));
+
+                    //TODO: CODE NOT WORKING. WE WANT TO CLOSE ALL INFO WINDOWS WHEN YOU CLICK ANYWHERE ON THE MAP
+                    map.addListener(map, "click", function(event) {
+                    infowindow.close();
+                    });
+
+                    // Creates a marker at your current location
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map
+                    });
+
+                    // Creates an infow window that says where you are
+                    var contentString =
+                    '<h1 id="firstHeading" class="firstHeading">You are here!</h1>';
+                    var infowindow = new google.maps.InfoWindow({
+                      content: contentString
+                    });
+
+                    // Opens the infowindow associated with the marker when clicked
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                    });
+
+                    // Loads all the data from the json file
+                    loadLost();
+
+        // SEARCH BOX CODE
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
         });
 
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
-          map: map
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            //TODO: Currently creates a marker on the map for each result, do we need it?
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+            myplace = place.geometry.location;
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
         });
-      }
+
+                });
+
+          }
 
             // Loads all the data from the json file
+            function loadLost() {
+                ajax({
+                  url: "/ajax/lost?action=get",
+                  type: "get",
+                  success: function (data) {
+                      data.forEach(function (sale) {
+                        /*
+                          var item = new google.maps.InfoWindow;
+                          item.setPosition({lat: lost.lat, lng: lost.lng});
+                          item.setContent(lost.name);
+                          item.open(map);
+                          */
+                        var newpos = {lat: sale.lat, lng: sale.lng};
+                        var marker = new google.maps.Marker({
+                            position: newpos,
+                            icon: 'img/self.png',
+                            map: map
+                        });
+                        //TODO MAKE THIS STUFF LOOK BEAUTIFUL
+                        var saleinfo =
+                        '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
+                        '<div id="body">'+
+                        '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
+                        '<p>'+sale.description+'</p>'+
+                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> Go here! </button>'+
+                        '</div>';
+                        var infowindow = new google.maps.InfoWindow({
+                          content: saleinfo
+                        });
 
+                        marker.addListener('click', function() {
+                          infowindow.open(map, marker);
+                        });
+                      });
+                  }
+              });
+            }
 
-           function getPoints() {
-        return [
+            function postFound() {
+                if ($("#found-item").val() == "") {
+                    alert("Please insert the name of the item");
+                }
+                else if ($("item-price").val() == "") {
+                    alert("Please insert the price of the item");
+                }
+                else if ($("#found-description").val() == "") {
+                    alert("Please insert the description of the item");
+                }
+                else
+                {
+                  getGeoPosition(function (pos) {
+                      ajax({
+                          url: "/ajax/found?action=post",
+                          type: "post",
+                          data: {
+                              name: $("#found-item").val(),
+                              price: $("#item-price").val(),
+                              description: $("#found-description").val(),
+                              // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
+                              lat: myplace.lat,
+                              lng: myplace.lng,
+                          },
+                          success: function (data) {
+                              alert("Post Success!");
+                              window.location.reload();
+                          }
+                      });
+                  });
+                }
+            }
+
+            function getGeoPosition(callback) {
+                // TODO: Try to get geolocation and put the result back to
+                // callback in the form of
+                //  {
+                //      lat: <LATITUDE>,
+                //      lng: <LONGITUDE>
+                //  }
+                navigator.geolocation.getCurrentPosition(function (info) {
+                  startLat = info.coords.latitude;
+                  startLng = info.coords.longitude;
+                  callback({lat: info.coords.latitude, lng: info.coords.longitude});
+                  /*callback is a function*/
+                });
+
+            }
+
+            function getPoints() {
+return [
           new google.maps.LatLng(37.782551, -122.445368),
           new google.maps.LatLng(37.782745, -122.444586),
           new google.maps.LatLng(37.782842, -122.443688),
@@ -611,10 +800,43 @@ $(document).ready( function() {
           new google.maps.LatLng(37.752986, -122.403112),
           new google.maps.LatLng(37.751266, -122.403355)
         ];
+      
+
+/*
+              var arr = [];
+
+                  ajax({
+                  url: "/ajax/lost?action=get",
+                  type: "get",
+                  success: function (data) {
+                      data.forEach(function (sale) {
+                        arr.push(new google.maps.LatLng(37.782551, -122.445368),
+);
+                      });
+                  }
+              });
+
+              return arr;
+*/
+            }
+
+
+
+      function calcRoute(saleLat, saleLng) {
+
+  var start = new google.maps.LatLng ( startLat, startLng);
+  var end = new google.maps.LatLng ( saleLat, saleLng);
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: 'DRIVING'
+  };
+  directionsService.route(request, function(result, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(result);
+    }
+  });
       }
-
-
-
         </script>
         <script src="js/index.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap&libraries=places"></script>
