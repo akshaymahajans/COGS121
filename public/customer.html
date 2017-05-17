@@ -15,7 +15,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
         <script src="js/jquery.js"></script>
     </head>
     <body>
-      <nav><color="blue">SwiftSales</nav>
+      <nav><color="blue">SwiftSales - CUSTOMER</nav>
         <main>
             <tab-section id="buy-tab-section" class="active">
                 <div id="map-outer">
@@ -23,20 +23,6 @@ DesignAtLarge/ixd-workshop-lost-and-found
                     <div id="right-panel"></div>
                     <div id="map"></div>
                 </div>
-            </tab-section>
-            <tab-section id="sell-tab-section">
-                <form id="found-form">
-                    <h2>Sell an item</h2>
-                    <label>Business: </label>
-                    <input id="found-item" type="text" placeholder="Keyboard" />
-                    <label>Location: </label>
-                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                    <label>Discount (% off): </label>
-                    <input id="item-price" type="text" placeholder="90" />
-                    <label>Description: </label>
-                    <textarea id="found-description" placeholder="Good condition!"></textarea>
-                    <button type="submit">Post</button>
-                </form>
             </tab-section>
             <tab-section id="profile-tab-section">
 <div id="topBar">
@@ -78,7 +64,6 @@ $(document).ready( function() {
 
         <footer>
             <tab id="buy-tab" class="active">Buy</tab>
-            <tab id="sell-tab">Sell</tab>
             <tab id="profile-tab">Profile</tab>
         </footer>
         <script>
