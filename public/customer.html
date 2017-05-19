@@ -13,6 +13,9 @@ DesignAtLarge/ixd-workshop-lost-and-found
         <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="css/styleButton.css">
         <script src="js/jquery.js"></script>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     </head>
     <body>
       <nav><color="blue">SwiftSales - CUSTOMER</nav>
@@ -46,11 +49,24 @@ $(document).ready( function() {
         <div class="float-menu">
       		<div class="plus"><div class="cross"></div></div>
       		<div class="menu-list">
-      			<a href="index.html" class="link-home">Map</a>
+      			<a href="indexCustomer.html" class="link-home">Map</a>
       			<a href="#my" class="link-my">Profile</a>
       			<a href="newPromotion.html" class="link-cart">New promotion</a>
       		</div>
       	</div>
+
+        <div class="fixed-action-btn">
+       <a class="btn-floating btn-large pink">
+         <i class="large material-icons">navigation</i>
+       </a>
+       <ul>
+         <li><a class="btn-floating pink lighten-4" href="Merchant.html"><i class="material-icons">place</i></a></li>
+         <li><a class="btn-floating pink lighten-3" href="newPromotion.html"><i class="material-icons">add</i></a></li>
+         <li><a class="btn-floating pink lighten-2" href="merchantProfile.html"><i class="material-icons">perm_identity</i></a></li>
+         <li><a class="btn-floating pink lighten-1" href="merchantLog.html"><i class="material-icons">assignment</i></a></li>
+         <li><a class="btn-floating pink lighten-1" href="index.html"><i class="material-icons">cancel</i></a></li>
+       </ul>
+     </div>
 
       	<script>
       		if(document.querySelector(".float-menu")){
@@ -294,6 +310,8 @@ $(document).ready( function() {
   });
       }
         </script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
         <script src="js/index.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap&libraries=places"></script>
     </body>

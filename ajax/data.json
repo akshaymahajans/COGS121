@@ -1,1 +1,46 @@
-[{"name":"YogurtWorld","price":25,"description":"On all yogurt on 5/10/17!","lat":32.8792035,"lng":-117.23599209999998},{"name":"Regents Pizzeria","price":25,"description":"Discounts on all deep dish pizzas! Celebrating our 10th year anniversary!  ","lat":32.8733956,"lng":-117.2180492},{"name":"Peets Coffee","price":5,"description":"On all coffee!","lat":32.8694983,"lng":-117.2310842},{"name":"Earls Place and Market","price":90,"description":"on all Mentos! They're expiring soon ;)","lat":32.883906,"lng":-117.23314900000003},{"name":"Target","price":10,"description":"shirts","lat":32.832889,"lng":-117.14604199999997},{"name":"Target","price":15,"description":"books","lat":32.8810662,"lng":-117.23408280000001}]
+[
+   {
+      "name":"YogurtWorld",
+      "price":25,
+      "description":"On all yogurt on 5/10/17!",
+      "lat":32.8792035,
+      "lng":-117.23599209999998
+   },
+   {
+      "name":"Regents Pizzeria",
+      "price":25,
+      "description":"Discounts on all deep dish pizzas! Celebrating our 10th year anniversary!  ",
+      "lat":32.8733956,
+      "lng":-117.2180492
+   },
+   {
+      "name":"Peets Coffee",
+      "price":5,
+      "description":"On all coffee!",
+      "lat":32.8694983,
+      "lng":-117.2310842,
+      "mid":12
+   },
+   {
+      "name":"Earls Place and Market",
+      "price":90,
+      "description":"on all Mentos! They're expiring soon ;)",
+      "lat":32.883906,
+      "lng":-117.23314900000003,
+      "mid":17
+   },
+   {
+      "name":"Target",
+      "price":10,
+      "description":"shirts",
+      "lat":32.832889,
+      "lng":-117.14604199999997
+   },
+   {
+      "name":"Target",
+      "price":15,
+      "description":"books",
+      "lat":32.8810662,
+      "lng":-117.23408280000001
+   }
+]

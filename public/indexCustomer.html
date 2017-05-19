@@ -80,7 +80,7 @@ $(document).ready( function() {
       		<div class="plus"><div class="cross"></div></div>
       		<div class="menu-list">
       			<a href="index.html" class="link-home">Map</a>
-      			<a href="#my" class="link-my">Profile</a>
+      			<a href="savedPromotions.html" class="link-my">Profile</a>
       			<a href="newPromotion.html" class="link-cart">New promotion</a>
       		</div>
       	</div>
@@ -114,7 +114,7 @@ $(document).ready( function() {
           var myplace;
           var startLat;
           var startLng;
-          var i = 1;
+          var i = 0;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -248,6 +248,7 @@ $(document).ready( function() {
                         '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
                         '<p>'+sale.description+'</p>'+
                         '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> Go here! </button>'+
+                        '<button onclick="saveItem('+sale.mid+')"> Bookmark </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({
                           content: saleinfo
@@ -284,6 +285,7 @@ $(document).ready( function() {
                               // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
                               lat: myplace.lat,
                               lng: myplace.lng,
+                              id: i
                           },
                           success: function (data) {
                               alert("Post Success!");
@@ -314,7 +316,7 @@ $(document).ready( function() {
 
             }
 
-
+// function
 
       function calcRoute(saleLat, saleLng) {
 
