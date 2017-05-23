@@ -66,8 +66,8 @@ $(document).ready( function() {
         <div class="float-menu">
       		<div class="plus"><div class="cross"></div></div>
       		<div class="menu-list">
-      			<a href="index.html" class="link-home">Map</a>
-      			<a href="#my" class="link-my">Profile</a>
+      			<a href="Merchant.html" class="link-home">Map</a>
+      			<a href="merchantLog.html" class="link-my">Profile</a>
       			<a href="newPromotion.html" class="link-cart">New promotion</a>
       		</div>
       	</div>
@@ -229,7 +229,7 @@ $(document).ready( function() {
       function toggleMarkers(){
           for(i=0; i<saleMarkers.length; i++){
               saleMarkers[i].setMap(saleMarkers[i].getMap() ? null : map);
-          }
+          } 
       }
 
       function changeGradient() {
@@ -354,8 +354,6 @@ $(document).ready( function() {
                 });
 
             }
-
-
 
       function calcRoute(saleLat, saleLng) {
 
