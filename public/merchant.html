@@ -10,15 +10,21 @@ DesignAtLarge/ixd-workshop-lost-and-found
     <head>
         <title>TBD</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/merchant.css" />
         <link rel="stylesheet" href="css/styleButton.css">
         <script src="js/jquery.js"></script>
     </head>
     <body>
       <nav><color="blue">SwiftSales</nav>
+          <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+
+    </div>
         <main>
             <tab-section id="buy-tab-section" class="active">
                 <div id="map-outer">
+
                     <img id="map-loading" src="img/loading.svg" />
                     <div id="right-panel"></div>
                     <div id="map"></div>
@@ -79,7 +85,6 @@ $(document).ready( function() {
         <footer>
             <tab id="buy-tab" class="active">Buy</tab>
             <tab id="sell-tab">Sell</tab>
-            <tab id="profile-tab">Profile</tab>
         </footer>
         <script>
 
@@ -90,12 +95,14 @@ $(document).ready( function() {
 //TODO: Reroute when clicking on a new location
 
           var map;
+          var heatmap;
+          var saleMarkers = [];
           var directionsService;
           var directionsDisplay;
           var myplace;
           var startLat;
           var startLng;
-          var heatmap;
+          var i = 1;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -104,13 +111,17 @@ $(document).ready( function() {
                     directionsDisplay = new google.maps.DirectionsRenderer;
                     map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 15,
-          center: {lat: 37.775, lng: -122.434},
+                        center: pos
                     });
 
                     heatmap = new google.maps.visualization.HeatmapLayer({
                       data: getPoints(),
-                      map: map
+                      map: map,
+                      radius: 50
                     });
+
+                    heatmap.setMap(null);
+
 
                     directionsDisplay.setMap(map);
                     //TODO: MAKE THE PANEL ONLY APPEAR WHEN SOMEONE CLICKS FOR DIRECTIONS, OTHERWISE DON'T HAVE THE PANEL VISIBLE
@@ -209,6 +220,52 @@ $(document).ready( function() {
 
           }
 
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+        toggleMarkers();
+
+      }
+
+      function toggleMarkers(){
+          for(i=0; i<saleMarkers.length; i++){
+              saleMarkers[i].setMap(saleMarkers[i].getMap() ? null : map);
+          }
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+      function getPoints() {
+        var arr = [];
+        ajax({
+          url: "/ajax/lost?action=get",
+          type: "get",
+          success: function (point) {
+              point.forEach(function (sale) {
+
+                arr.push(new google.maps.LatLng(sale.lat, sale.lng));
+              });
+          }
+        });
+        return arr;
+        }
+
             // Loads all the data from the json file
             function loadLost() {
                 ajax({
@@ -228,6 +285,7 @@ $(document).ready( function() {
                             icon: 'img/self.png',
                             map: map
                         });
+                        saleMarkers.push(marker);
                         //TODO MAKE THIS STUFF LOOK BEAUTIFUL
                         var saleinfo =
                         '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
@@ -297,8 +355,6 @@ $(document).ready( function() {
 
             }
 
-           
-
 
 
       function calcRoute(saleLat, saleLng) {
@@ -318,6 +374,8 @@ $(document).ready( function() {
       }
         </script>
         <script src="js/index.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap&libraries=places"></script>
+        <script async defer 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_3CzPmUCHF4dV_ulsNZHVWj7bs5oKMI&callback=initMap&libraries=places&libraries=visualization">
+        </script>
     </body>
 </html>
