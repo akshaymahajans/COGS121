@@ -13,7 +13,7 @@
 #### Akshay:
 * Changed map style
 * Create AJAX post for merchant accounts/information to save their account information and log back in with proper credentials. 
-
+* Cleaned up/refactored code
 #### Tim:
 * Changed map style
 * Create AJAX post/get for saving merchant promotions and assigning them to the unique merchant.
