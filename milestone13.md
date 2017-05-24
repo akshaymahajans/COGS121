@@ -6,6 +6,10 @@
 * Make it possible for users to save a promotion by clicking at the star icon.
 
 #### Prince:
+* Created a different map for merchants
+* Generated a heat map for merchants to allow them to see a different view of the current sales within their area
+* Made the maps more smooth and intuitive by cleaning up the markers and info windows; info windows will close when clicking outside them
+
 #### Akshay:
 #### Tim:
 
