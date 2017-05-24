@@ -61,3 +61,10 @@ html, body {
   top:50px;
   right:50px;
 }
+.likebtn {
+  color:pink;
+}
+
+.bluenav {
+  background-color: rgba(177, 227, 249, 0.6);
+}

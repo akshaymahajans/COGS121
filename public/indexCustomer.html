@@ -56,9 +56,9 @@ DesignAtLarge/ixd-workshop-lost-and-found
 <div class="nav-wrapper" style="float: top; background-color:rgb(252, 186, 206)">
 <a href="#" class="brand-logo center">SwiftSales</a>
 <ul id="nav-mobile" class="right hide-on-med-and-down">
-  <li><a href="savedPromotions.html"><i class="material-icons">face</i></a></li>
+  <li><a href="savedPromotions.html">Saved Promotions</a></li>
+  <li><a href="indexCustomer.html">Mapview</a></li>
   <li><a href="index.html">Logout</a></li>
-  <li><a href="indexCustomer.html"><i class="material-icons">map</i></a></li>
 </ul>
 </div>
 </nav>
@@ -70,7 +70,8 @@ DesignAtLarge/ixd-workshop-lost-and-found
   <h4>Promotion List</h4>
   <ul class="collapsible" data-collapsible="accordion">
 <li>
-  <div class="collapsible-header"><i class="material-icons">restaurant</i>First Promotion<i class="material-icons" id="likebtn" style="float: right;">star</i></div>
+  <div class="collapsible-header"><i class="material-icons">restaurant</i>First Promotion
+    <i class="material-icons starbtn"  style="float: right;">star</i></div>
   <div class="collapsible-body">
     <p>Business Name:</p>
     <p>Promotion Location:</p>
@@ -79,7 +80,8 @@ DesignAtLarge/ixd-workshop-lost-and-found
     </div>
 </li>
 <li>
-  <div class="collapsible-header"><i class="material-icons">local_offer</i>Second Promotion</div>
+  <div class="collapsible-header"><i class="material-icons">local_offer</i>Second Promotion
+    <i class="material-icons starbtn" style="float: right;">star</i></div>
   <div class="collapsible-body">
     <p>Business Name:</p>
     <p>Promotion Location:</p>
@@ -88,7 +90,8 @@ DesignAtLarge/ixd-workshop-lost-and-found
     </div>
 </li>
 <li>
-  <div class="collapsible-header"><i class="material-icons">videogame_asset</i>Third Promotion</div>
+  <div class="collapsible-header"><i class="material-icons">videogame_asset</i>Third Promotion
+    <i class="material-icons starbtn"  style="float: right;">star</i></div>
   <div class="collapsible-body">
     <p>Business Name:</p>
     <p>Promotion Location:</p>
@@ -109,7 +112,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
    <!-- <a href="#" id="openRightNav"><i class="medium material-icons" onclick="openNav()">directions_run</i></a> -->
 
 
-   <div class="fixed-action-btn">
+   <!-- <div class="fixed-action-btn">
   <a class="btn-floating btn-large pink">
     <i class="large material-icons">navigation</i>
   </a>
@@ -120,7 +123,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
     <li><a class="btn-floating pink lighten-1" href="merchantLog.html"><i class="material-icons">assignment</i></a></li>
     <li><a class="btn-floating pink lighten-1" href="index.html"><i class="material-icons">cancel</i></a></li>
   </ul>
-</div>
+</div> -->
 <!-- Fire Base Code -->
 
 <!-- <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
@@ -147,9 +150,9 @@ $(document).ready( function() {
         $("#content").load("itemBought.html");
     });
 
-    $("#likebtn").on("click", function() {
-        $("#likebtn").css("color","pink");
-    });
+    $(".starbtn").click(function(){
+    $(this).toggleClass("likebtn");
+  });
 });
 </script>
             <!-- </tab-section> -->
