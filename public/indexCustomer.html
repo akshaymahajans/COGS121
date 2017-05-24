@@ -53,7 +53,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 <div id ="content">
 </div> -->
 <nav>
-<div class="nav-wrapper" style="float: top;">
+<div class="nav-wrapper" style="float: top; background-color:rgb(252, 186, 206)">
 <a href="#" class="brand-logo center">SwiftSales</a>
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li><a href="savedPromotions.html"><i class="material-icons">face</i></a></li>
@@ -70,7 +70,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
   <h4>Promotion List</h4>
   <ul class="collapsible" data-collapsible="accordion">
 <li>
-  <div class="collapsible-header"><i class="material-icons">restaurant</i>First Promotion</div>
+  <div class="collapsible-header"><i class="material-icons">restaurant</i>First Promotion<i class="material-icons" id="likebtn" style="float: right;">star</i></div>
   <div class="collapsible-body">
     <p>Business Name:</p>
     <p>Promotion Location:</p>
@@ -104,9 +104,9 @@ DesignAtLarge/ixd-workshop-lost-and-found
  <!-- The side panel on the right for showing the route/direction. -->
  <div id="mySidenav" class="sidenav">
    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <p>Directions show here.</p>
+   <h4>Directions</h4>
  </div>
-   <a href="#" id="openRightNav"><i class="medium material-icons" onclick="openNav()">directions_run</i></a>
+   <!-- <a href="#" id="openRightNav"><i class="medium material-icons" onclick="openNav()">directions_run</i></a> -->
 
 
    <div class="fixed-action-btn">
@@ -145,6 +145,10 @@ DesignAtLarge/ixd-workshop-lost-and-found
 $(document).ready( function() {
     $("#load_home").on("click", function() {
         $("#content").load("itemBought.html");
+    });
+
+    $("#likebtn").on("click", function() {
+        $("#likebtn").css("color","pink");
     });
 });
 </script>
@@ -240,7 +244,7 @@ $(document).ready( function() {
                         {
                           "featureType": "water",
                           "elementType": "geometry.fill",
-                          "stylers": [{"color": "#fbc2d4"}]}]
+                          "stylers": [{"color": "#f7d8e2"}]}]
                     });
                     directionsDisplay.setMap(map);
                     //TODO: MAKE THE PANEL ONLY APPEAR WHEN SOMEONE CLICKS FOR DIRECTIONS, OTHERWISE DON'T HAVE THE PANEL VISIBLE
@@ -364,7 +368,7 @@ $(document).ready( function() {
                         '<div id="body">'+
                         '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
                         '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> Go here! </button>'+
+                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+'); openNav()"> Go here! </button>'+
                         '<button onclick="saveItem('+sale.mid+')"> Bookmark </button>'+
                         '</div>';
                         var infowindow = new google.maps.InfoWindow({

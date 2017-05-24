@@ -11,12 +11,12 @@ html, body {
 }
 .button-collapse {
   position: absolute;
-  left: 50px;
-  top: 50px;
+  left: 20px;
+  top: 12px;
 }
 #list {
-  font-size: 48px;
-  color: rgb(249, 112, 161);
+  font-size: 36px;
+  color: white;
 }
 
 .sidenav {
@@ -27,7 +27,7 @@ html, body {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: rgb(246, 205, 222);
+    background-color: rgba(238, 210, 222, 0.68);
     overflow-x: hidden;
     padding-top: 60px;
 }
