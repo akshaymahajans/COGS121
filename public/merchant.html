@@ -97,6 +97,7 @@ $(document).ready( function() {
           var map;
           var heatmap;
           var saleMarkers = [];
+          var saleWindows = [];
           var directionsService;
           var directionsDisplay;
           var myplace;
@@ -128,9 +129,14 @@ $(document).ready( function() {
                     directionsDisplay.setPanel(document.getElementById('right-panel'));
 
                     //TODO: CODE NOT WORKING. WE WANT TO CLOSE ALL INFO WINDOWS WHEN YOU CLICK ANYWHERE ON THE MAP
-                    map.addListener(map, "click", function(event) {
-                    infowindow.close();
+                    
+                    google.maps.event.addListener(map, "click", function(event) {
+                      for(i=0; i<saleMarkers.length; i++)
+                      {
+                        saleMarkers[i].infowindow.close();
+                      } 
                     });
+
 
                     // Creates a marker at your current location
                     var marker = new google.maps.Marker({
@@ -285,22 +291,25 @@ $(document).ready( function() {
                             icon: 'img/self.png',
                             map: map
                         });
-                        saleMarkers.push(marker);
                         //TODO MAKE THIS STUFF LOOK BEAUTIFUL
-                        var saleinfo =
-                        '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
+
+                        marker.infowindow = new google.maps.InfoWindow({
+                          content: '<h1 id="firstheader" class="firstheader">'+sale.name+'</h1>'+
                         '<div id="body">'+
                         '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
                         '<p>'+sale.description+'</p>'+
                         '<button onclick="calcRoute('+sale.lat+', '+sale.lng+')"> Go here! </button>'+
-                        '</div>';
-                        var infowindow = new google.maps.InfoWindow({
-                          content: saleinfo
+                        '</div>'
                         });
 
+
+                        //salesWindows.push(infowindow);
+
                         marker.addListener('click', function() {
-                          infowindow.open(map, marker);
+                          marker.infowindow.open(map, marker);
                         });
+                        saleMarkers.push(marker);
+
                       });
                   }
               });
