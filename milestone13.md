@@ -1,7 +1,7 @@
 # Milestone 13
 #### Siru:
 * Change the UI of the main pages.
-* Change the style of maps.
+* Changed map style
 * Create side panels for letting users see the promotions list on the left and see the routes on the right.
 * Make it possible for users to save a promotion by clicking at the star icon.
 
@@ -11,7 +11,12 @@
 * Made the maps more smooth and intuitive by cleaning up the markers and info windows; info windows will close when clicking outside them
 
 #### Akshay:
+* Changed map style
+* Create AJAX post for merchant accounts/information to save their account information and log back in with proper credentials. 
+
 #### Tim:
+* Changed map style
+* Create AJAX post/get for saving merchant promotions and assigning them to the unique merchant.
 
 
 #### Screenshots:
