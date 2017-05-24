@@ -8,6 +8,27 @@ $("#found-form").submit(function () {
     return false;
 });
 
+$(document).ready()
+{
+        ajax({
+                  url: "/ajax/lost?action=get",
+                  type: "get",
+                  success: function (data) {
+                      data.forEach(function (sale) {
+                        $("#collist").append(
+                            '<li><div class="collapsible-header"><i collapsiblelass="material-icons"></i>'
+                            +sale.name+
+                            '<i class="material-icons starbtn"  style="float: right;">star</i></div><div class="collapsible-body">'
+                            +'<p>Business Name:</p>'
+                            +'<p>Promotion Location:</p>'
+                            +'<p>Promotion Details:</p>'
+                            +'<p>Limitation of claiming:</p>'
+                            +'</div></li>');
+                      });
+                  }
+              });
+}
+
 function ajax(option) {
     var originalSuccess = option.success;
     option.success = function (result) {
