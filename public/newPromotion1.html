@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <script src="js/jquery.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -89,16 +90,16 @@
                                 <div class="form-group">
                                   <div class="profile-info">
                                     <label>Discount Type:</label>
-                                    <input type="input"  placeholder="Discount type..."></div>
+                                    <input type="input"  placeholder="Discount type..." id="promotion-name"></div>
                                   <div class="profile-info">
                                     <label>Discount Amount:</label>
-                                    <input type="number"  placeholder="Amount of your discount..."></div>
+                                    <input type="number"  placeholder="Amount of your discount..." id="promotion-price"></div>
                                   <div class="profile-info">
                                     <label> Time Limit: </label>
                                     <input type="datetime-local"></div>
                                   <div class="profile-info">
                                     <label>Claim Limit:</label>
-                                    <input type="number"  placeholder="# of available discount.."></div>
+                                    <input type="number"  placeholder="# of available discount.." id="claim-limit"></div>
                                   <div class="profile-info">
                                     <label>Promotion Location:</label>
                                       <input id="pac-input" class="controls" type="input" placeholder="Search a location">
@@ -115,27 +116,83 @@
 
         <!-- Javascript -->
         <script>
+        var myplace;
+        var map;
         function initMap() {
-              var map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 15,
-                    center: new google.maps.LatLng(51.508742,-0.120850),
-                  });
-                  // SEARCH BOX CODE
-                  // Create the search box and link it to the UI element.
-                  var input = document.getElementById('pac-input');
-                  var searchBox = new google.maps.places.SearchBox(input);
-                  // Bias the SearchBox results towards current map's viewport.
-                  map.addListener('bounds_changed', function() {
-                    searchBox.setBounds(map.getBounds());
-                  });
-                  searchBox.addListener('places_changed', function() {
-                    var places = searchBox.getPlaces();
-                    if (places.length == 0) {
-                      return;
-                    }
-                  });
+          getGeoPosition(function (pos) {
+                  map = new google.maps.Map(document.getElementById("map"), {
+                  zoom: 15,
+                  center: pos
+                });
+                // SEARCH BOX CODE
+                // Create the search box and link it to the UI element.
+                var input = document.getElementById('pac-input');
+                var searchBox = new google.maps.places.SearchBox(input);
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener('bounds_changed', function() {
+                  searchBox.setBounds(map.getBounds());
+                });
+                searchBox.addListener('places_changed', function() {
+                  var places = searchBox.getPlaces();
+                  if (places.length == 0) {
+                    return;
+                  }
+                  places.forEach(function(place) {
+                  myplace = place.geometry.location;
+                });
+                });
+          });
+
                 }
 
+                function postFound() {
+                    if ($("#promotion-name").val() == "") {
+                        alert("Please insert the name of the promotion");
+                    }
+                    else if ($("promotion-price").val() == "") {
+                        alert("Please insert the price of the promotion");
+                    }
+                    else if ($("#claim-limit").val() == "") {
+                        alert("Please insert the limit of claimness");
+                    }
+                    else
+                    {
+                      getGeoPosition(function (pos) {
+                          ajax({
+                              url: "/ajax/found?action=post",
+                              type: "post",
+                              data: {
+                                  name: $("#promotion-name").val(),
+                                  price: $("#promotion-price").val(),
+                                  claim-limit: $("#claim-limit").val(),
+                                  // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
+                                  lat: myplace.lat,
+                                  lng: myplace.lng,
+                              },
+                              success: function (data) {
+                                  alert("Post Success!");
+                                  window.location.reload();
+                              }
+                          });
+                      });
+                    }
+                }
+
+                function getGeoPosition(callback) {
+                    // TODO: Try to get geolocation and put the result back to
+                    // callback in the form of
+                    //  {
+                    //      lat: <LATITUDE>,
+                    //      lng: <LONGITUDE>
+                    //  }
+                    navigator.geolocation.getCurrentPosition(function (info) {
+                      startLat = info.coords.latitude;
+                      startLng = info.coords.longitude;
+                      callback({lat: info.coords.latitude, lng: info.coords.longitude});
+                      /*callback is a function*/
+                    });
+
+                }
 
 
         </script>
