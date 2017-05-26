@@ -11,4 +11,11 @@ module.exports = {
     fs.writeFile("ajax/data.json", JSON.stringify(d));
     res.success();
   }
+
+  post2: function (req, res){
+    var d = require("./merchantData.json");
+    d.push(req.body);
+    fs.writeFile("ajax/merchantData.json", JSON.stringify(d));
+    res.success();
+  }
 }
