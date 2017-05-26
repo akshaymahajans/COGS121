@@ -13,6 +13,7 @@ module.exports = {
   }
 
   post2: function (req, res){
+  	console.log("hello");
     var d = require("./merchantData.json");
     d.push(req.body);
     fs.writeFile("ajax/merchantData.json", JSON.stringify(d));

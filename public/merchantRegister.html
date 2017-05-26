@@ -89,7 +89,7 @@
 
                                     
                               <!-- <button class="btn"><a href="customerLogin.html">Sign up!</a></button> -->
-                              <button type="submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
+                              <button onclik="postFound2()" type="submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
 			                        <!-- <button type="signup" class="btn" href="customerLogin.html">Sign up!</button> -->
 			                    </form>
 		                    </div>
@@ -125,7 +125,8 @@
 
 
         <script>
-            function postFound() {
+
+            function postFound2() {
                 if ($("#m_name").val() == "") {
                     alert("Please insert the business name");
                 }
