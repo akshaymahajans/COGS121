@@ -127,7 +127,11 @@ DesignAtLarge/ixd-workshop-lost-and-found
    <h4>Directions</h4>
  </div>
    <!-- <a href="#" id="openRightNav"><i class="medium material-icons" onclick="openNav()">directions_run</i></a> -->
-
+   <div class="card">
+     <div class="card-image">
+       <img src="img/Legend.png">
+     </div>
+  </div>
 
    <!-- <div class="fixed-action-btn">
   <a class="btn-floating btn-large pink">
@@ -382,8 +386,13 @@ $(document).ready( function() {
       function toggleHeatmap() {
         heatmap.setMap(heatmap.getMap() ? null : map);
         toggleMarkers();
+        $(".card").toggle();
 
       }
+      $(document).ready(function(){
+          $(".card").hide();
+      });
+
 
       function toggleMarkers(){
           for(i=0; i<saleMarkers.length; i++){

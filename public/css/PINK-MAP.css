@@ -1,7 +1,7 @@
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
 #map {
-  height: 100%;
+  height: 92%;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {
@@ -67,4 +67,11 @@ html, body {
 
 .bluenav {
   background-color: rgba(177, 227, 249, 0.6);
+}
+.card {
+  position: absolute;
+  bottom: 200px;
+  left: 100px;
+  height: 150px;
+  width: 300px;
 }
