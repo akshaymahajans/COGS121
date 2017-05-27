@@ -85,11 +85,8 @@
                                         <div class="formLabel">Enter Business Location</div>
                                         <input id="m_location" type="text" name="form-password" placeholder="Business Location..." class="form-password form-control" >
                                     </div>
-                                  </div>
-
-                                    
-                              <!-- <button class="btn"><a href="customerLogin.html">Sign up!</a></button> -->
-                              <button onclik="postFound2()" type="submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
+                
+                              <button onclick="postFound2()" type="submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
 			                        <!-- <button type="signup" class="btn" href="customerLogin.html">Sign up!</button> -->
 			                    </form>
 		                    </div>
@@ -127,6 +124,7 @@
         <script>
 
             function postFound2() {
+                console.log("yolo");
                 if ($("#m_name").val() == "") {
                     alert("Please insert the business name");
                 }
@@ -145,6 +143,7 @@
                 else
                 {
                   getGeoPosition(function (pos) {
+                    console.log("yolo");
                       ajax({
                           url: "/ajax/found?action=post2",
                           type: "post",

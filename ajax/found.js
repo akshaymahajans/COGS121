@@ -10,7 +10,7 @@ module.exports = {
     d.push(req.body);
     fs.writeFile("ajax/data.json", JSON.stringify(d));
     res.success();
-  }
+  },
 
   post2: function (req, res){
   	console.log("hello");
@@ -19,4 +19,5 @@ module.exports = {
     fs.writeFile("ajax/merchantData.json", JSON.stringify(d));
     res.success();
   }
+
 }
