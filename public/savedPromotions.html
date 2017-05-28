@@ -10,14 +10,18 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
      <script src="js/jquery.js"></script>
    </head>
-
+    <style media="screen">
+    .expired {
+      text-align: center;
+    }
+    </style>
    <body>
      <!-- Top Navigation Bar -->
      <nav>
      <div class="nav-wrapper" style="float: top; background-color:rgb(252, 186, 206)">
      <a href="#" class="brand-logo center">SwiftSales</a>
      <ul id="nav-mobile" class="right hide-on-med-and-down">
-       <li><a href="savedPromotions.html">Saved Promotions</a></li>
+       <li class="active"><a href="savedPromotions.html">Saved Promotions</a></li>
        <li><a href="indexCustomer.html">Mapview</a></li>
        <li><a href="index.html">Logout</a></li>
      </ul>
@@ -93,30 +97,40 @@
             </div>
           </div>
 
-          <div class="card pink lighten-5 mainContent" id="card5">
-            <div class="card-content blue-grey-text text-darken-1">
+          <div class="card grey lighten-3 mainContent" id="card5">
+            <div class="card-content blue-grey-text text-lighten-3">
               <span class="card-title">Promotion Name</span>
               <p>Here is all other information about this promotion. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatem explicabo minima fugiat delectus vel nihil aspernatur, eligendi atque impedit
                 voluptatum quibusdam neque repellat, quae suscipit temporibus quia architecto hic ducimus.</p>
             </div>
-            <div class="card-action">
-              <a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>
-              <a class="light-blue-text" id="removebtn5" href="#" style="float:right;">Remove</a>
+            <div class="card-action expired">
+              <a class="blue-grey-text">Sorry, the promotion has expired.</a>
+            </div>
+          </div>
+          <div class="card grey lighten-3 mainContent" id="card5">
+            <div class="card-content blue-grey-text text-lighten-3">
+              <span class="card-title">Promotion Name</span>
+              <p>Here is all other information about this promotion. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptatem explicabo minima fugiat delectus vel nihil aspernatur, eligendi atque impedit
+                voluptatum quibusdam neque repellat, quae suscipit temporibus quia architecto hic ducimus.</p>
+            </div>
+            <div class="card-action expired">
+              <a class="blue-grey-text">Sorry, the promotion has expired.</a>
             </div>
           </div>
 
-          <div class="card pink lighten-5 mainContent" id="card6">
-            <div class="card-content blue-grey-text text-darken-1">
+
+
+            <!-- <div class="card-content blue-grey-text text-darken-1">
               <span class="card-title">Promotion Name</span>
               <p>Here is all other information about this promotion. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Voluptatem explicabo minima fugiat delectus vel nihil aspernatur, eligendi atque impedit
                 voluptatum quibusdam neque repellat, quae suscipit temporibus quia architecto hic ducimus.</p>
             </div>
-            <div class="card-action">
-              <a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>
-              <a class="light-blue-text" id="removebtn6" href="#" style="float:right;">Remove</a>
-            </div>
+            <div class="card-action grey">
+              <a class="light-blue-text text-lighten-3" >No Longer Available</a>
+            </div> -->
           </div>
         </div>
       </div>

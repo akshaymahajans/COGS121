@@ -75,3 +75,19 @@ html, body {
   height: 150px;
   width: 300px;
 }
+.collapsible-body {
+  color: rgb(252, 189, 227);
+}
+/*@keyframes whoosh {
+  from { motion-offset: 0%; }
+  to { motion-offset: 100%; }
+}
+
+#pinkstar {
+    motion-path: path("M0,0c99.75,45,345.68,139.89,663,97,298.45-40.34,501.64-181.16,588-249");
+    motion-rotation: auto;
+    animation-name: whoosh;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}*/

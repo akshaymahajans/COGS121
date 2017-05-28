@@ -22,12 +22,13 @@ DesignAtLarge/ixd-workshop-lost-and-found
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
+
 <nav>
 <div class="nav-wrapper" style="float: top; background-color:rgb(252, 186, 206)">
 <a href="#" class="brand-logo center">SwiftSales</a>
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li><a href="savedPromotions.html">Saved Promotions</a></li>
-  <li><a href="indexCustomer.html">Mapview</a></li>
+  <li class="active"><a href="indexCustomer.html">Mapview</a></li>
   <li><a href="index.html">Logout</a></li>
 </ul>
 </div>
@@ -38,11 +39,12 @@ DesignAtLarge/ixd-workshop-lost-and-found
 <!-- The side panel on the left for showing the promotion lists. -->
 <ul id="slide-out" class="side-nav">
   <h4>Promotion List</h4>
-  <ul class="collapsible" id="collist" data-collapsible="accordion">
+  <ul class="collapsible popout" id="collist" data-collapsible="accordion">
 </ul>
  </ul>
  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons" id="list">view_list</i></a>
 
+<!-- <img id="pinkstar" src="img/pink_star.png" alt="" style="position: absolute; left: 231px; top:150px;"> -->
 
  <!-- The side panel on the right for showing the route/direction. -->
  <div id="mySidenav" class="sidenav">
@@ -85,13 +87,34 @@ DesignAtLarge/ixd-workshop-lost-and-found
 
 
 <script>
+// var xaxis;
+// var yaxis
+// function getMousePos(event) {
+//             var e = event || window.event;
+//             xaxis = e.clientX;
+//             yaxis = e.clientY;
+//             return {'x':e.clientX,'y':e.clientY}
+//         }
+var click_number = 1;
 $(document).ready( function() {
+  $("#pinkstar").hide();
     $("#load_home").on("click", function() {
         $("#content").load("itemBought.html");
     });
 
     $(".starbtn").click(function(){
     $(this).toggleClass("likebtn");
+    if (click_number%2 != 0){
+      Materialize.toast('Added to your saved list!', 1000, 'pink lighten-3');
+    }
+    else if (click_number%2 == 0){
+      Materialize.toast('Removed from your saved list!', 1000, 'grey lighten-1');
+    }
+    click_number+=1;
+    // getMousePos();
+    // console.log(xaxis);
+    // console.log(yaxis);
+    // $("#pinkstar").show();
   });
 });
 </script>
@@ -169,7 +192,7 @@ $(document).ready( function() {
                       for(i=0; i<saleMarkers.length; i++)
                       {
                         saleMarkers[i].infowindow.close();
-                      } 
+                      }
                     });
 
                     // Creates a marker at your current location
