@@ -23,12 +23,11 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="js/form_submit.js"></script>
+        <!-- <script src="assets/js/scripts.js"></script> -->
 
     </head>
 
@@ -47,7 +46,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                             <div class="form-bottom" id="blueform">
-			                    <form id="mrid" role="form" action="merchantLogin.html" method="post" class="login-form-blue" >
+			                    <form id="mrid" class="login-form-blue" action="/merchant.html">
 
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
@@ -85,8 +84,8 @@
                                         <div class="formLabel">Enter Business Location</div>
                                         <input id="m_location" type="text" name="form-password" placeholder="Business Location..." class="form-password form-control" >
                                     </div>
-                
-                              <button onclick="postFound2()" type="submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
+
+                              <button type="submit" id="m_submit" class="button button-glow button-rounded button-blue button-block button-large">Create the account!</button>
 			                        <!-- <button type="signup" class="btn" href="customerLogin.html">Sign up!</button> -->
 			                    </form>
 		                    </div>
@@ -115,56 +114,6 @@
 
 
         <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-
-
-        <script>
-
-            function postFound2() {
-                console.log("yolo");
-                if ($("#m_name").val() == "") {
-                    alert("Please insert the business name");
-                }
-                else if ($("m_email").val() == "") {
-                    alert("Please insert email");
-                }
-                else if ($("#m_pass").val() == "") {
-                    alert("Please insert password");
-                }
-                else if ($("#m_type").val() == "") {
-                    alert("Please select type of business");
-                }
-                else if ($("#m_location").val() == "") {
-                    alert("Please insert the location of business");
-                }
-                else
-                {
-                  getGeoPosition(function (pos) {
-                    console.log("yolo");
-                      ajax({
-                          url: "/ajax/found?action=post2",
-                          type: "post",
-                          data: {
-                              bname: $("#m_name").val(),
-                              bemail: $("#m_email").val(),
-                              bpass: $("#m_pass").val(),
-                              btype: $("#m_type").val(),
-                              blocation: $("#m_location").val()
-                              //lat: myplace.lat,
-                              //lng: myplace.lng,
-                          },
-                          success: function (data) {
-                              alert("Post Success!");
-                              window.location.reload();
-                          }
-                      });
-                  });
-                }
-            }
-        </script>
 
 
         <!--[if lt IE 10]>
