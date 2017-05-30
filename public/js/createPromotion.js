@@ -10,6 +10,8 @@ function createNewPromotion() {
                   promotionLocation: $("#pac-input").val(),
                   // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
                   promotionId: Date.now(),
+                  lat: myplace.lat,
+                  lng: myplace.lng,
               },
               success: function (data) {
                   alert("New Promotion Post Success");

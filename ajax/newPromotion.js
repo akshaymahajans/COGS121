@@ -10,7 +10,9 @@ module.exports = {
      var claim = req.body.promotionClaimLimit;
      var loc = req.body.promotionLocation;
      var id = req.body.promotionId;
-     var promotionInfo = {des, time, claim, loc, id};
+     var latitude = req.body.lat;
+     var longitude = req.body.lng;
+     var promotionInfo = {des, time, claim, loc, id, latitude, longitude};
 
     d.push(promotionInfo);
     // d.push(Password);

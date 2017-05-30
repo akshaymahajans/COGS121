@@ -114,25 +114,69 @@
 
         <!-- Javascript -->
         <script>
+        var myplace;
+        var map;
         function initMap() {
-              var map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 15,
-                    center: new google.maps.LatLng(51.508742,-0.120850),
-                  });
-                  // SEARCH BOX CODE
-                  // Create the search box and link it to the UI element.
-                  var input = document.getElementById('pac-input');
-                  var searchBox = new google.maps.places.SearchBox(input);
-                  // Bias the SearchBox results towards current map's viewport.
-                  map.addListener('bounds_changed', function() {
-                    searchBox.setBounds(map.getBounds());
-                  });
-                  searchBox.addListener('places_changed', function() {
-                    var places = searchBox.getPlaces();
-                    if (places.length == 0) {
-                      return;
-                    }
-                  });
+          getGeoPosition(function (pos) {
+            map = new google.maps.Map(document.getElementById("map"), {
+               zoom: 15,
+               center: new google.maps.LatLng(51.508742,-0.120850),
+             });
+             // SEARCH BOX CODE
+             // Create the search box and link it to the UI element.
+             var input = document.getElementById('pac-input');
+             var searchBox = new google.maps.places.SearchBox(input);
+             // Bias the SearchBox results towards current map's viewport.
+             map.addListener('bounds_changed', function() {
+               searchBox.setBounds(map.getBounds());
+             });
+             searchBox.addListener('places_changed', function() {
+               var places = searchBox.getPlaces();
+               if (places.length == 0) {
+                 return;
+               }
+               places.forEach(function(place) {
+               myplace = place.geometry.location;
+             });
+             });
+          });
+                //  map = new google.maps.Map(document.getElementById("map"), {
+                //     zoom: 15,
+                //     center: new google.maps.LatLng(51.508742,-0.120850),
+                //   });
+                //   // SEARCH BOX CODE
+                //   // Create the search box and link it to the UI element.
+                //   var input = document.getElementById('pac-input');
+                //   var searchBox = new google.maps.places.SearchBox(input);
+                //   // Bias the SearchBox results towards current map's viewport.
+                //   map.addListener('bounds_changed', function() {
+                //     searchBox.setBounds(map.getBounds());
+                //   });
+                //   searchBox.addListener('places_changed', function() {
+                //     var places = searchBox.getPlaces();
+                //     if (places.length == 0) {
+                //       return;
+                //     }
+                //     places.forEach(function(place) {
+                //     myplace = place.geometry.location;
+                //   });
+                //   });
+                }
+
+                function getGeoPosition(callback) {
+                    // TODO: Try to get geolocation and put the result back to
+                    // callback in the form of
+                    //  {
+                    //      lat: <LATITUDE>,
+                    //      lng: <LONGITUDE>
+                    //  }
+                    navigator.geolocation.getCurrentPosition(function (info) {
+                      // startLat = info.coords.latitude;
+                      // startLng = info.coords.longitude;
+                      callback({lat: info.coords.latitude, lng: info.coords.longitude});
+                      /*callback is a function*/
+                    });
+
                 }
 
 
