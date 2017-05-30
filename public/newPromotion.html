@@ -81,30 +81,29 @@
                           <!-- <div class="col-sm-6 col-sm-offset-3 social-login"> -->
                           	<!-- <h3>Create a New Promotion</h3> -->
                           	<!-- <div class="social-login-buttons"> -->
-                            <form class="form-inline form1" role="form">
+                            <form id="newPromotionForm" class="form-inline form1" role="form">
                               <div id="legend">
                                 <legend>Create a New Promotion</legend>
                               </div>
                               <div class="form_body">
                                 <div class="form-group">
                                   <div class="profile-info">
-                                    <label>Discount Type:</label>
-                                    <input type="input"  placeholder="Discount type..."></div>
-                                  <div class="profile-info">
+                                    <label>Discount Description:</label>
+                                    <input id="p_description" type="input"  placeholder="Discount description..."></div>
+                                  <!-- <div class="profile-info">
                                     <label>Discount Amount:</label>
-                                    <input type="number"  placeholder="Amount of your discount..."></div>
+                                    <input type="number"  placeholder="Amount of your discount..."></div> -->
                                   <div class="profile-info">
                                     <label> Time Limit: </label>
-                                    <input type="datetime-local"></div>
+                                    <input id="p_time" type="datetime-local"></div>
                                   <div class="profile-info">
                                     <label>Claim Limit:</label>
-                                    <input type="number"  placeholder="# of available discount.."></div>
+                                    <input id="p_claim" type="number"  placeholder="# of available discount.."></div>
                                   <div class="profile-info">
                                     <label>Promotion Location:</label>
                                       <input id="pac-input" class="controls" type="input" placeholder="Search a location">
                                   </div>
-
-                                  <a class="btn btn-link-2" id="postbtn" href="Merchant.html">Post a promotion</a>
+                                  <a type="submit" class="btn btn-link-2" id="postbtn" href="Merchant.html">Post a promotion</a>
                                   <a class="btn btn-link-2" id="cancelbtn" href="Merchant.html">Cancel</a>
                                 </div>
                               </div>
@@ -143,7 +142,8 @@
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
-        <script src="js/index.js"></script>
+        <!-- <script src="js/index.js"></script> -->
+        <script src="js/createPromotion.js"></script>
 
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>
