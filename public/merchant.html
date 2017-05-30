@@ -129,7 +129,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
    <!-- <a href="#" id="openRightNav"><i class="medium material-icons" onclick="openNav()">directions_run</i></a> -->
    <div class="card">
      <div class="card-image">
-       <img src="img/Legend.png">
+       <img id="legend" src="img/legend-1.png">
      </div>
   </div>
 
@@ -222,6 +222,7 @@ $(document).ready( function() {
           var startLat;
           var startLng;
           var i = 1;
+          var colorChange = 1;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -418,6 +419,13 @@ $(document).ready( function() {
           'rgba(255, 0, 0, 1)'
         ]
         heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+        if (colorChange%2 != 0){
+          $("#legend").attr('src', "img/legend-2.png");
+        }
+        else if (colorChange%2 == 0){
+          $("#legend").attr('src', "img/legend-1.png");
+        }
+        colorChange++;
       }
       function getPoints() {
         var arr = [];
