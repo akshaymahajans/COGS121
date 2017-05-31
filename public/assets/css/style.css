@@ -204,7 +204,7 @@ img { max-width: 100%; }
 
 }
 .login, .register {
-  margin-top: 200px;
+  margin-top: 250px;
 }
 input[type="input"], input[type="number"], input[type="datetime-local"]{
   background: rgba(0,0,0,0.05);
