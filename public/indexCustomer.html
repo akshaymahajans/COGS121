@@ -387,6 +387,7 @@ $(document).ready( function() {
 
 
                         marker.addListener('click', function() {
+                          closeAllWindows();
                           marker.infowindow.open(map, marker);
                         });
 
@@ -454,6 +455,14 @@ $(document).ready( function() {
             //       });
             //     }
             // }
+
+      function closeAllWindows()
+      {
+          for(i=0; i<saleMarkers.length; i++)
+          {
+            saleMarkers[i].infowindow.close();
+          }
+      }
 
       function toggleFood()
       {

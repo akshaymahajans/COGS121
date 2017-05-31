@@ -8,7 +8,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 <!DOCTYPE html>
 <html>
     <head>
-      <title>MerchantIndex</title>
+      <title>SwiftSales</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <meta charset="utf-8">
       <!-- <link rel="stylesheet" href="css/index.css" /> -->
@@ -491,6 +491,7 @@ $(document).ready( function() {
 
                         //salesWindows.push(infowindow);
                         marker.addListener('click', function() {
+                          closeAllWindows();
                           marker.infowindow.open(map, marker);
                         });
                         saleMarkers.push(marker);
@@ -531,6 +532,13 @@ $(document).ready( function() {
             //       });
             //     }
             // }
+            function closeAllWindows()
+            {
+                for(i=0; i<saleMarkers.length; i++)
+                {
+                  saleMarkers[i].infowindow.close();
+                }
+            }
 
             function getGeoPosition(callback) {
                 // TODO: Try to get geolocation and put the result back to
