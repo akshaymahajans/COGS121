@@ -11,7 +11,8 @@
 * 
 
 #### Akshay:
-* 
+* Assisted in implementation of a business category filter for the markers.
+* Made some improvements to the UI.
 #### Tim:
 * 
 
