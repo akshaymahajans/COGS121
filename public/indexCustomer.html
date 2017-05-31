@@ -40,7 +40,17 @@ DesignAtLarge/ixd-workshop-lost-and-found
 <ul id="slide-out" class="side-nav">
 
   <h4>Promotion List</h4>
-
+  <!-- Dropdown Trigger -->
+  <a class='dropdown-button btn grey lighten-2' href='#' data-activates='dropdown1' alignment='right' id="filter"><i class="material-icons">filter_list</i></a></br>
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a onclick="filterMarkers('Food')">Food</a></li>
+    <li><a onclick="filterMarkers('Market')">Market</a></li>
+    <li><a onclick="filterMarkers('Electronics')">Electronics</a></li>
+    <li><a onclick="filterMarkers('Cosmetics')">Cosmetics</a></li>
+    <li><a onclick="filterMarkers('Other')">Other</a></li>
+  </ul>
+    <!--
   <ul class="collapsible popout" id="filter" data-collapsible="accordion">
     <li><div class='collapsible-header active'><h2> Filters </h2></div></li>
      <li><div class='collapsible-header' onclick="filterMarkers('Food')" style="text-align: center;"><h5> Food </h5></div></li>
@@ -49,7 +59,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
        <li><div class='collapsible-header' onclick="filterMarkers('Cosmetics')"style="text-align: center;"><h5> Cosmetics </h5></div></li>
        <li><div class='collapsible-header' onclick="filterMarkers('Other')"style="text-align: center;"><h5> Other </h5></div></li>
 
-  </ul>
+  </ul> -->
 
   <ul class="collapsible popout" id="collist" data-collapsible="accordion">
 </ul>
@@ -317,7 +327,7 @@ $(document).ready( function() {
                   success: function (data) {
                       data.forEach(function (sale) {
 
-                      
+
                         var newpos = {lat: sale.latitude, lng: sale.longitude};
                         var marker = new google.maps.Marker({
                             position: newpos,
@@ -434,7 +444,7 @@ $(document).ready( function() {
         {
           for(i=0; i<foodMarkers.length; i++){
               foodMarkers[i].setMap(foodMarkers[i].getMap() ? null : map);
-          }     
+          }
 
           foodToggle = (foodToggle > 0 ? -1 : 1);
           filterNum += foodToggle;
@@ -444,41 +454,41 @@ $(document).ready( function() {
         {
           for(i=0; i<marketMarkers.length; i++){
               marketMarkers[i].setMap(marketMarkers[i].getMap() ? null : map);
-          }     
+          }
 
           marketToggle = (marketToggle > 0 ? -1 : 1);
           filterNum += marketToggle;
-        }      
+        }
 
         if (type == 'Electronics')
         {
           for(i=0; i<electronicMarkers.length; i++){
               electronicMarkers[i].setMap(electronicMarkers[i].getMap() ? null : map);
-          }     
+          }
 
           electronicToggle = (electronicToggle > 0 ? -1 : 1);
           filterNum += electronicToggle;
-        }     
+        }
 
         if (type == 'Cosmetics')
         {
           for(i=0; i<cosmeticMarkers.length; i++){
               cosmeticMarkers[i].setMap(cosmeticMarkers[i].getMap() ? null : map);
-          }     
+          }
 
           cosmeticToggle = (cosmeticToggle > 0 ? -1 : 1);
           filterNum += cosmeticToggle;
-        }      
+        }
 
         if (type == 'Other')
         {
           for(i=0; i<otherMarkers.length; i++){
               otherMarkers[i].setMap(otherMarkers[i].getMap() ? null : map);
-          }     
+          }
 
           otherToggle = (otherToggle > 0 ? -1 : 1);
           filterNum += otherToggle;
-        }      
+        }
 
         if (filterNum == 0)
         {

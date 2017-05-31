@@ -100,3 +100,21 @@ html, body {
   text-align: left;
   color: #e2a7b9;
 }
+#filter {
+  margin-left: 190px;
+  font-size: 13px;
+  height: 25px;
+  width: 40px;
+  padding: 0px 8px;
+  line-height: 26px;
+  margin-top: -10px;
+  float: right;
+}
+#dropdown1 {
+  margin-left: 120px;
+}
+h4 {
+  line-height: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
