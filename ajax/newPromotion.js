@@ -15,12 +15,20 @@ module.exports = {
      var promotionInfo = {des, time, claim, loc, id, latitude, longitude};
 
     d.push(promotionInfo);
-    // d.push(Password);
-    // d.push(Name);
-    // d.push(Type);
-    // d.push(BusinessLocation);
     console.log("writing---" + d);
     fs.writeFile("ajax/promotion_info.json", JSON.stringify(d));
     res.success();
   }
+  // getPromotionInfo: function(req, res) {
+  //   var data = require("./promotion_info.json");
+  //   res.success(data);
+  // }
+
 }
+//
+// module.exports = {
+//   getPromotionInfo: function(req, res) {
+//     var data = require("./promotion_info.json");
+//     res.success(data);
+//   }
+// }
