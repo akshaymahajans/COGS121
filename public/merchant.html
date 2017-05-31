@@ -320,65 +320,65 @@ $(document).ready( function() {
         // SEARCH BOX CODE
 
         // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
+        // var input = document.getElementById('pac-input');
+        // var searchBox = new google.maps.places.SearchBox(input);
+        //
+        // // Bias the SearchBox results towards current map's viewport.
+        // map.addListener('bounds_changed', function() {
+        //   searchBox.setBounds(map.getBounds());
+        // });
 
         var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
+        // searchBox.addListener('places_changed', function() {
+        //   var places = searchBox.getPlaces();
+        //
+        //   if (places.length == 0) {
+        //     return;
+        //   }
+        //
+        //   // Clear out the old markers.
+        //   markers.forEach(function(marker) {
+        //     marker.setMap(null);
+        //   });
+        //   markers = [];
+        //
+        //   // For each place, get the icon, name and location.
+        //   var bounds = new google.maps.LatLngBounds();
+        //   places.forEach(function(place) {
+        //     if (!place.geometry) {
+        //       console.log("Returned place contains no geometry");
+        //       return;
+        //     }
+        //     var icon = {
+        //       url: place.icon,
+        //       size: new google.maps.Size(71, 71),
+        //       origin: new google.maps.Point(0, 0),
+        //       anchor: new google.maps.Point(17, 34),
+        //       scaledSize: new google.maps.Size(25, 25)
+        //     };
 
             //TODO: Currently creates a marker on the map for each result, do we need it?
 
             // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-            myplace = place.geometry.location;
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
+        //     markers.push(new google.maps.Marker({
+        //       map: map,
+        //       icon: icon,
+        //       title: place.name,
+        //       position: place.geometry.location
+        //     }));
+        //     myplace = place.geometry.location;
+        //
+        //     if (place.geometry.viewport) {
+        //       // Only geocodes have viewport.
+        //       bounds.union(place.geometry.viewport);
+        //     } else {
+        //       bounds.extend(place.geometry.location);
+        //     }
+        //   });
+        //   map.fitBounds(bounds);
+        // });
 
                 });
 
@@ -445,7 +445,7 @@ $(document).ready( function() {
             // Loads all the data from the json file
             function loadLost() {
                 ajax({
-                  url: "/ajax/lost?action=get",
+                  url: "/ajax/getPromotion?action=getPromotionInfo",
                   type: "get",
                   success: function (data) {
                       data.forEach(function (sale) {
@@ -455,7 +455,7 @@ $(document).ready( function() {
                           item.setContent(lost.name);
                           item.open(map);
                           */
-                        var newpos = {lat: sale.lat, lng: sale.lng};
+                        var newpos = {lat: sale.latitude, lng: sale.longitude};
                         var marker = new google.maps.Marker({
                             position: newpos,
                             icon: 'img/self.png',
@@ -463,12 +463,13 @@ $(document).ready( function() {
                         });
                         //TODO MAKE THIS STUFF LOOK BEAUTIFUL
                         marker.infowindow = new google.maps.InfoWindow({
-                          content: '<h5 id="firstheader" class="firstheader">'+sale.name+'</h5>'+
-                        '<div id="body">'+
-                        '<p><b>Discount:</b> '+sale.price+'% off!</p>'+
-                        '<p>'+sale.description+'</p>'+
-                        '<button onclick="calcRoute('+sale.lat+', '+sale.lng+'); openNav()"> Go here! </button>'+
-                        '</div>'
+                          content: '<h5 id="firstheader" class="firstheader">'+sale.bName+'</h5>'+
+                          '<div id="body">'+
+                          '<p><b>Type:</b> '+sale.bType+'</p>'+
+                          '<p><b>Description:</b>'+sale.des+'</p>'+
+                          '<button onclick="calcRoute('+sale.latitude+', '+sale.longitude+'); openNav()"> Go here! </button>'+
+                          '<button onclick="saveItem('+sale.mid+')"> Bookmark </button>'+
+                          '</div>'
                         });
 
                         //salesWindows.push(infowindow);
@@ -481,38 +482,38 @@ $(document).ready( function() {
               });
             }
 
-            function postFound() {
-                if ($("#found-item").val() == "") {
-                    alert("Please insert the name of the item");
-                }
-                else if ($("item-price").val() == "") {
-                    alert("Please insert the price of the item");
-                }
-                else if ($("#found-description").val() == "") {
-                    alert("Please insert the description of the item");
-                }
-                else
-                {
-                  getGeoPosition(function (pos) {
-                      ajax({
-                          url: "/ajax/found?action=post",
-                          type: "post",
-                          data: {
-                              name: $("#found-item").val(),
-                              price: $("#item-price").val(),
-                              description: $("#found-description").val(),
-                              // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
-                              lat: myplace.lat,
-                              lng: myplace.lng,
-                          },
-                          success: function (data) {
-                              alert("Post Success!");
-                              window.location.reload();
-                          }
-                      });
-                  });
-                }
-            }
+            // function postFound() {
+            //     if ($("#found-item").val() == "") {
+            //         alert("Please insert the name of the item");
+            //     }
+            //     else if ($("item-price").val() == "") {
+            //         alert("Please insert the price of the item");
+            //     }
+            //     else if ($("#found-description").val() == "") {
+            //         alert("Please insert the description of the item");
+            //     }
+            //     else
+            //     {
+            //       getGeoPosition(function (pos) {
+            //           ajax({
+            //               url: "/ajax/found?action=post",
+            //               type: "post",
+            //               data: {
+            //                   name: $("#found-item").val(),
+            //                   price: $("#item-price").val(),
+            //                   description: $("#found-description").val(),
+            //                   // TODO: LOCATION TO ACCESS PLACE FORM SEARCH BOX
+            //                   lat: myplace.lat,
+            //                   lng: myplace.lng,
+            //               },
+            //               success: function (data) {
+            //                   alert("Post Success!");
+            //                   window.location.reload();
+            //               }
+            //           });
+            //       });
+            //     }
+            // }
 
             function getGeoPosition(callback) {
                 // TODO: Try to get geolocation and put the result back to

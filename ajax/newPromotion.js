@@ -11,8 +11,8 @@ module.exports = {
      var claim = req.body.promotionClaimLimit;
      var loc = req.body.promotionLocation;
      var id = req.body.promotionId;
-     var latitude = req.body.lat;
-     var longitude = req.body.lng;
+     var latitude = parseFloat(req.body.lat);
+     var longitude = parseFloat(req.body.lng);
      var promotionInfo = {bName, bType, des, time, claim, loc, id, latitude, longitude};
 
     d.push(promotionInfo);
