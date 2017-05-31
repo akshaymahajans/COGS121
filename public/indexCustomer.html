@@ -38,7 +38,19 @@ DesignAtLarge/ixd-workshop-lost-and-found
 
 <!-- The side panel on the left for showing the promotion lists. -->
 <ul id="slide-out" class="side-nav">
+
   <h4>Promotion List</h4>
+
+  <ul class="collapsible popout" id="filter" data-collapsible="accordion">
+    <li><div class='collapsible-header active'><h2> Filters </h2></div></li>
+     <li><div class='collapsible-header' style="text-align: center;"><h5> Food </h5></div></li>
+     <li><div class='collapsible-header' style="text-align: center;"><h5> Market </h5></div></li>
+      <li><div class='collapsible-header' style="text-align: center;"><h5> Electronics </h5></div></li>
+       <li><div class='collapsible-header' style="text-align: center;"><h5> Cosmetics </h5></div></li>
+       <li><div class='collapsible-header' style="text-align: center;"><h5> Other </h5></div></li>
+
+  </ul>
+
   <ul class="collapsible popout" id="collist" data-collapsible="accordion">
 </ul>
  </ul>
@@ -290,12 +302,8 @@ $(document).ready( function() {
                   type: "get",
                   success: function (data) {
                       data.forEach(function (sale) {
-                        /*
-                          var item = new google.maps.InfoWindow;
-                          item.setPosition({lat: lost.lat, lng: lost.lng});
-                          item.setContent(lost.name);
-                          item.open(map);
-                          */
+
+                      
                         var newpos = {lat: sale.latitude, lng: sale.longitude};
                         var marker = new google.maps.Marker({
                             position: newpos,
