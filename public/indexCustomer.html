@@ -118,6 +118,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 //             return {'x':e.clientX,'y':e.clientY}
 //         }
 var click_number = 1;
+// var saved_promotion;
 $(document).ready( function() {
   $("#pinkstar").hide();
     $("#load_home").on("click", function() {
@@ -132,12 +133,27 @@ $(document).ready( function() {
     else if (click_number%2 == 0){
       Materialize.toast('Removed from your saved list!', 1000, 'grey lighten-1');
     }
+    // saved_promotion = $((this).parent()).parent().html();
+    //
+    // addToSavedPromotion(saved_promotion);
     click_number+=1;
     // getMousePos();
     // console.log(xaxis);
     // console.log(yaxis);
     // $("#pinkstar").show();
   });
+  // function addToSavedPromotion(saved_promotion) {
+  //           $.ajax({
+  //               url: "/ajax/savePromotion?action=savePromotions",
+  //               type: "post",
+  //               data: {
+  //                   saved_promotion
+  //               },
+  //               success: function (data) {
+  //                   alert("Save a promotion Success!");
+  //               }
+  //           });
+  // }
 });
 </script>
 
@@ -329,16 +345,34 @@ $(document).ready( function() {
 
 
                         var newpos = {lat: sale.latitude, lng: sale.longitude};
+                        var businessType = sale.bType;
+                        var iconImg;
+                        if (businessType=="Food"){
+                          iconImg='img/self.png';
+                        }
+                        else if (businessType=="Market") {
+                          iconImg='img/market.png';
+                        }
+                        else if (businessType=="Electronics") {
+                          iconImg='img/electronics.png';
+                        }
+                        else if (businessType=="Cosmetics") {
+                          iconImg='img/cosmetics.png';
+                        }
+                        else if (businessType=="Others") {
+                          iconImg='img/other.png';
+                        }
+
                         var marker = new google.maps.Marker({
                             position: newpos,
-                            icon: 'img/self.png',
+                            icon: iconImg,
                             map: map
                         });
                         //TODO MAKE THIS STUFF LOOK BEAUTIFUL
 
                         marker.infowindow = new google.maps.InfoWindow({
                           content:
-                        '<h1 id="firstheader" class="firstheader">'+sale.bName+'</h1>'+
+                        '<h5 id="firstheader" class="firstheader">'+sale.bName+'</h5>'+
                         '<div id="body">'+
                         '<p><b>Type:</b> '+sale.bType+'</p>'+
                         '<p><b>Description:</b>'+sale.des+'</p>'+

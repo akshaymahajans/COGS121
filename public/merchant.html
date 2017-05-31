@@ -455,10 +455,27 @@ $(document).ready( function() {
                           item.setContent(lost.name);
                           item.open(map);
                           */
+                          var businessType = sale.bType;
+                          var iconImg;
+                          if (businessType=="Food"){
+                            iconImg='img/self.png';
+                          }
+                          else if (businessType=="Market") {
+                            iconImg='img/market.png';
+                          }
+                          else if (businessType=="Electronics") {
+                            iconImg='img/electronics.png';
+                          }
+                          else if (businessType=="Cosmetics") {
+                            iconImg='img/cosmetics.png';
+                          }
+                          else if (businessType=="Others") {
+                            iconImg='img/other.png';
+                          }
                         var newpos = {lat: sale.latitude, lng: sale.longitude};
                         var marker = new google.maps.Marker({
                             position: newpos,
-                            icon: 'img/self.png',
+                            icon: iconImg,
                             map: map
                         });
                         //TODO MAKE THIS STUFF LOOK BEAUTIFUL
