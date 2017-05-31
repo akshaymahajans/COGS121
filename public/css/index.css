@@ -100,11 +100,6 @@ width: 390px;
 overflow: auto;
 }
 
-.content {
-    z-index: 1; 
-    position: absolute;
-}
-
 #map-loading {
     position: fixed;
     left: 50%;
