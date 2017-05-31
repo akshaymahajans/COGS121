@@ -18,7 +18,7 @@ $(document).ready()
                         $("#collist").append(
                             '<li><div class="collapsible-header"><i collapsiblelass="material-icons"></i>'
                             +sale.bName+
-                            '<i class="material-icons starbtn"  style="float: right;">star</i></div><div class="collapsible-body">'
+                            '<i class="material-icons starbtn"  style="float: right;">star</i></div><div id="promotionCell" class="collapsible-body">'
                             +'&nbsp;<b>Business Type:</b>'+sale.bType
                             +'</br>&nbsp;<b>Promotion Location:</b>'+sale.loc
                             +'</br>&nbsp;<b>Promotion Details:</b>'+sale.des

@@ -48,17 +48,27 @@
           <!-- <div class="card red lighten-5 mainContent" id="card1">
             <div class="card-content blue-grey-text text-darken-1">
               <span class="card-title">Promotion Name</span>
-              <p>Here is all other information about this promotion. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptatem explicabo minima fugiat delectus vel nihil aspernatur, eligendi atque impedit
-                voluptatum quibusdam neque repellat, quae suscipit temporibus quia architecto hic ducimus.</p>
+              <p id="pDescription"></p>
             </div>
             <div class="card-action">
               <a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>
               <a class="light-blue-text" id="removebtn1" href="#" style="float:right;">Remove</a>
             </div>
-          </div>
+          </div> -->
 
-          <div class="card red lighten-5 mainContent" id="card2">
+          <script>
+            $(document).ready(function(){
+              $("#sp_List").append('<div class="card red lighten-5 mainContent" id="card1">'+
+              '<div class="card-content blue-grey-text text-darken-1">'+
+              'span class="card-title">Promotion Name</span>'+
+              '<p>'+localStorage.getItem("p_Info")+'</p>'+'</div>'+
+              '<div class="card-action">'+'<a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>'+
+              '<a class="light-blue-text" id="removebtn1" href="#" style="float:right;">Remove</a>'+
+              '</div>'+'</div>');
+            });
+          </script>
+
+          <!-- <div class="card red lighten-5 mainContent" id="card2">
             <div class="card-content blue-grey-text text-darken-1">
               <span class="card-title">Promotion Name</span>
               <p>Here is all other information about this promotion. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -118,7 +128,7 @@
             <div class="card-action expired">
               <a class="blue-grey-text">Sorry, the promotion has expired.</a>
             </div>
-          </div> -->
+          </div> --> -->
 
 
 
@@ -130,7 +140,7 @@
             </div>
             <div class="card-action grey">
               <a class="light-blue-text text-lighten-3" >No Longer Available</a>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
