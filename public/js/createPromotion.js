@@ -4,6 +4,8 @@ function createNewPromotion() {
               url: "/ajax/newPromotion?action=createPromotion",
               type: "post",
               data: {
+                  businessName: $("#b_Name").val(),
+                  businessType: $("#b_Type").val(),
                   promotionDescription: $("#p_description").val(),
                   promotionExpirationTime: $("#p_time").val(),
                   promotionClaimLimit: $("#p_claim").val(),

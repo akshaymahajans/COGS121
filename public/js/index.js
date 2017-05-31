@@ -11,18 +11,19 @@ $("#found-form").submit(function () {
 $(document).ready()
 {
         ajax({
-                  url: "/ajax/lost?action=get",
+                  url: "/ajax/getPromotion?action=getPromotionInfo",
                   type: "get",
                   success: function (data) {
                       data.forEach(function (sale) {
                         $("#collist").append(
                             '<li><div class="collapsible-header"><i collapsiblelass="material-icons"></i>'
-                            +sale.name+
+                            +sale.bName+
                             '<i class="material-icons starbtn"  style="float: right;">star</i></div><div class="collapsible-body">'
-                            +'<p>Business Name:</p>'
-                            +'<p>Promotion Location:</p>'
-                            +'<p>Promotion Details:</p>'
-                            +'<p>Limitation of claiming:</p>'
+                            +'&nbsp;<b>Business Type:</b>'+sale.bType
+                            +'</br>&nbsp;<b>Promotion Location:</b>'+sale.loc
+                            +'</br>&nbsp;<b>Promotion Details:</b>'+sale.des
+                            +'</br>&nbsp;<b>Limitation of claiming:</b>'+sale.claim
+                            +'</br>&nbsp;<b>Expiration Time:</b>'+sale.time
                             +'</div></li>');
                       });
                   }

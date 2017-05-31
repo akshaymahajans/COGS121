@@ -95,3 +95,8 @@ html, body {
     animation-timing-function: linear;
     animation-iteration-count: 1;
 }*/
+.collapsible-body {
+  line-height: 30px;
+  text-align: left;
+  color: #e2a7b9;
+}
