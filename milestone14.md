@@ -8,7 +8,10 @@
 * Create a logo for the app.
 
 #### Prince:
-* 
+* Added filtering system to the customer's point of view of the map
+* Kept track of the markers to be able to toggle them, assisting in the heat map and the filtering system
+* Changed the map icons to be more intuitive to the user
+* Removed the ability to show more than one promotion to prevent cluttering on the screen
 
 #### Akshay:
 * Assisted in implementation of a business category filter for the markers.
