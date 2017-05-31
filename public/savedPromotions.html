@@ -60,7 +60,7 @@
             $(document).ready(function(){
               $("#sp_List").append('<div class="card red lighten-5 mainContent" id="card1">'+
               '<div class="card-content blue-grey-text text-darken-1">'+
-              'span class="card-title">Promotion Name</span>'+
+              '<span class="card-title">'+localStorage.getItem("p_Title")+'</span>'+
               '<p>'+localStorage.getItem("p_Info")+'</p>'+'</div>'+
               '<div class="card-action">'+'<a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>'+
               '<a class="light-blue-text" id="removebtn1" href="#" style="float:right;">Remove</a>'+
@@ -128,7 +128,7 @@
             <div class="card-action expired">
               <a class="blue-grey-text">Sorry, the promotion has expired.</a>
             </div>
-          </div> --> -->
+          </div> -->
 
 
 
@@ -140,7 +140,7 @@
             </div>
             <div class="card-action grey">
               <a class="light-blue-text text-lighten-3" >No Longer Available</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -167,7 +167,7 @@
                $("#card6").hide(500);
            });
        });
-       </script>
+     </script>
 
      <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
      <script type="text/javascript" src="js/materialize.min.js"></script>

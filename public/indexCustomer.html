@@ -133,11 +133,12 @@ $(document).ready( function() {
     if (click_number%2 != 0){
       Materialize.toast('Added to your saved list!', 1000, 'pink lighten-3');
       var pInfo = $(this).parent().siblings("#promotionCell").html();
-      var pTitle = $(this).parent().html();
+      var pTitle = $(this).prev().html();
       console.log(pTitle);
       // console.log(pInfo);
       localStorage.setItem("p_Info", pInfo);
-      console.log(localStorage.getItem("p_Info"));
+      localStorage.setItem("p_Title", pTitle);
+      //console.log(localStorage.getItem("p_Info"));
     }
     else if (click_number%2 == 0){
       Materialize.toast('Removed from your saved list!', 1000, 'grey lighten-1');
