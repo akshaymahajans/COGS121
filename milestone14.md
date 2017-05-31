@@ -21,6 +21,7 @@
 
 #### Completed Features:
 * Allows merchants and customers to have completely separate views to interact within our app
+* Users can create an account to identify themselves as a merchant or a customer
 * Merchants can create a promotion for their business, and it will be reflected on the map for all merchants and customers
 * Merchants can see an immediate visual summary of the promotions around them by switching to a heat map
 * Merchants can keep track of all of their existing promotions through their merchant log
