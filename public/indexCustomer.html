@@ -332,6 +332,7 @@ $(document).ready( function() {
                         '<div id="body">'+
                         '<p><b>Type:</b> '+sale.bType+'</p>'+
                         '<p><b>Description:</b>'+sale.des+'</p>'+
+                        '<p><b>Remaining Offers:</b>'+sale.claim+'</p>'+
                         '<button onclick="calcRoute('+sale.latitude+', '+sale.longitude+'); openNav()"> Go here! </button>'+
                         '<button onclick="saveItem('+sale.mid+')"> Bookmark </button>'+
                         '</div>'
@@ -448,7 +449,7 @@ $(document).ready( function() {
           marketToggle = (marketToggle > 0 ? -1 : 1);
           filterNum += marketToggle;
         }      
-        
+
         if (type == 'Electronics')
         {
           for(i=0; i<electronicMarkers.length; i++){
