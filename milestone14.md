@@ -1,6 +1,7 @@
 # Milestone 14
 #### Siru:
-* Saved merchant's information and new promotion to the json file, and display the data from json file on different pages.
+* Saved merchant's information and new promotion to the json file, 
+  and let data from json file displayed on different pages.
 * Made merchantLog work.
 * Create legends for the heatmap.
 * Made some improvements to the UI.
@@ -15,4 +16,3 @@
 * 
 
 #### Completed Features:
-*
