@@ -43,11 +43,11 @@ DesignAtLarge/ixd-workshop-lost-and-found
 
   <ul class="collapsible popout" id="filter" data-collapsible="accordion">
     <li><div class='collapsible-header active'><h2> Filters </h2></div></li>
-     <li><div class='collapsible-header' style="text-align: center;"><h5> Food </h5></div></li>
-     <li><div class='collapsible-header' style="text-align: center;"><h5> Market </h5></div></li>
-      <li><div class='collapsible-header' style="text-align: center;"><h5> Electronics </h5></div></li>
-       <li><div class='collapsible-header' style="text-align: center;"><h5> Cosmetics </h5></div></li>
-       <li><div class='collapsible-header' style="text-align: center;"><h5> Other </h5></div></li>
+     <li><div class='collapsible-header' onclick="filterMarkers('Food')" style="text-align: center;"><h5> Food </h5></div></li>
+     <li><div class='collapsible-header' onclick="filterMarkers('Market')"style="text-align: center;"><h5> Market </h5></div></li>
+      <li><div class='collapsible-header' onclick="filterMarkers('Electronics')"style="text-align: center;"><h5> Electronics </h5></div></li>
+       <li><div class='collapsible-header' onclick="filterMarkers('Cosmetics')"style="text-align: center;"><h5> Cosmetics </h5></div></li>
+       <li><div class='collapsible-header' onclick="filterMarkers('Other')"style="text-align: center;"><h5> Other </h5></div></li>
 
   </ul>
 
@@ -137,13 +137,27 @@ $(document).ready( function() {
 //TODO: Reroute when clicking on a new location
 
           var map;
+
           var saleMarkers = [];
+          var foodMarkers = [];
+          var marketMarkers = [];
+          var cosmeticMarkers = [];
+          var electronicMarkers = [];
+          var otherMarkers = [];
+
+          var foodToggle = 1;
+          var marketToggle = 1;
+          var cosmeticToggle = 1;
+          var electronicToggle = 1;
+          var otherToggle = 1;
+
           var directionsService;
           var directionsDisplay;
           var myplace;
           var startLat;
           var startLng;
           var i = 0;
+          var filterNum = 0;
 
             function initMap() {
                 $("#map-loading").fadeOut();
@@ -329,6 +343,26 @@ $(document).ready( function() {
                         });
 
                         saleMarkers.push(marker);
+                        if (sale.bType == 'Food')
+                        {
+                          foodMarkers.push(marker);
+                        }
+                        if (sale.bType == 'Market')
+                        {
+                          marketMarkers.push(marker);
+                        }
+                        if (sale.bType == 'Electronics')
+                        {
+                          electronicMarkers.push(marker);
+                        }
+                        if (sale.bType == 'Cosmetics')
+                        {
+                          cosmeticMarkers.push(marker);
+                        }
+                        if (sale.bType == 'Other')
+                        {
+                          otherMarkers.push(marker);
+                        }
 
                       });
                   }
@@ -372,6 +406,86 @@ $(document).ready( function() {
             //       });
             //     }
             // }
+
+      function toggleFood()
+      {
+          toggleMarkers();
+          for(i=0; i<foodMarkers.length; i++){
+              foodMarkers[i].setMap(foodMarkers[i].getMap() ? null : map);
+          }
+      }
+
+      function toggleAllMarkers()
+      {
+          for(i=0; i<saleMarkers.length; i++){
+              saleMarkers[i].setMap(saleMarkers[i].getMap() ? null : map);
+          }
+      }
+
+      function filterMarkers(type)
+      {
+        if (filterNum == 0)
+        {
+          toggleAllMarkers();
+        }
+
+        if (type == 'Food')
+        {
+          for(i=0; i<foodMarkers.length; i++){
+              foodMarkers[i].setMap(foodMarkers[i].getMap() ? null : map);
+          }     
+
+          foodToggle = (foodToggle > 0 ? -1 : 1);
+          filterNum += foodToggle;
+        }
+
+        if (type == 'Market')
+        {
+          for(i=0; i<marketMarkers.length; i++){
+              marketMarkers[i].setMap(marketMarkers[i].getMap() ? null : map);
+          }     
+
+          marketToggle = (marketToggle > 0 ? -1 : 1);
+          filterNum += marketToggle;
+        }      
+        
+        if (type == 'Electronics')
+        {
+          for(i=0; i<electronicMarkers.length; i++){
+              electronicMarkers[i].setMap(electronicMarkers[i].getMap() ? null : map);
+          }     
+
+          electronicToggle = (electronicToggle > 0 ? -1 : 1);
+          filterNum += electronicToggle;
+        }     
+
+        if (type == 'Cosmetics')
+        {
+          for(i=0; i<cosmeticMarkers.length; i++){
+              cosmeticMarkers[i].setMap(cosmeticMarkers[i].getMap() ? null : map);
+          }     
+
+          cosmeticToggle = (cosmeticToggle > 0 ? -1 : 1);
+          filterNum += cosmeticToggle;
+        }      
+
+        if (type == 'Other')
+        {
+          for(i=0; i<otherMarkers.length; i++){
+              otherMarkers[i].setMap(otherMarkers[i].getMap() ? null : map);
+          }     
+
+          otherToggle = (otherToggle > 0 ? -1 : 1);
+          filterNum += otherToggle;
+        }      
+
+        if (filterNum == 0)
+        {
+          toggleAllMarkers();
+        }
+
+      }
+
 
             function getGeoPosition(callback) {
                 // TODO: Try to get geolocation and put the result back to
