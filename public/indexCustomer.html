@@ -514,6 +514,14 @@ $(document).ready( function() {
         {
           for(i=0; i<foodMarkers.length; i++){
               foodMarkers[i].setMap(foodMarkers[i].getMap() ? null : map);
+              if (foodToggle > 0)
+                {
+                  document.getElementById("f_li").style.backgroundColor = "rgb(253, 100, 99)";
+                }
+                else
+                {
+                  document.getElementById("f_li").style.backgroundColor = ""
+                }
           }
 
           foodToggle = (foodToggle > 0 ? -1 : 1);
@@ -526,6 +534,15 @@ $(document).ready( function() {
               marketMarkers[i].setMap(marketMarkers[i].getMap() ? null : map);
           }
 
+          if (marketToggle > 0)
+          {
+            document.getElementById("m_li").style.backgroundColor = "rgb(253, 100, 99)";
+          }
+          else
+          {
+            document.getElementById("m_li").style.backgroundColor = ""
+          }
+
           marketToggle = (marketToggle > 0 ? -1 : 1);
           filterNum += marketToggle;
         }
@@ -534,6 +551,15 @@ $(document).ready( function() {
         {
           for(i=0; i<electronicMarkers.length; i++){
               electronicMarkers[i].setMap(electronicMarkers[i].getMap() ? null : map);
+          }
+
+          if (electronicToggle > 0)
+          {
+            document.getElementById("e_li").style.backgroundColor = "rgb(253, 100, 99)";
+          }
+          else
+          {
+            document.getElementById("e_li").style.backgroundColor = ""
           }
 
           electronicToggle = (electronicToggle > 0 ? -1 : 1);
@@ -546,14 +572,33 @@ $(document).ready( function() {
               cosmeticMarkers[i].setMap(cosmeticMarkers[i].getMap() ? null : map);
           }
 
+          if (cosmeticToggle > 0)
+          {
+            document.getElementById("c_li").style.backgroundColor = "rgb(253, 100, 99)";
+          }
+          else
+          {
+            document.getElementById("c_li").style.backgroundColor = ""
+          }
+
           cosmeticToggle = (cosmeticToggle > 0 ? -1 : 1);
           filterNum += cosmeticToggle;
+
         }
 
         if (type == 'Other')
         {
           for(i=0; i<otherMarkers.length; i++){
               otherMarkers[i].setMap(otherMarkers[i].getMap() ? null : map);
+          }
+          
+          if (otherToggle > 0)
+          {
+            document.getElementById("o_li").style.backgroundColor = "rgb(253, 100, 99)";
+          }
+          else
+          {
+            document.getElementById("o_li").style.backgroundColor = ""
           }
 
           otherToggle = (otherToggle > 0 ? -1 : 1);
