@@ -25,7 +25,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 
 <nav>
 <div class="nav-wrapper" style="float: top; background-color:rgb(252, 186, 206)">
-<a href="#" class="brand-logo center">SwiftSales</a>
+<img id="logo_sm" src="img/logo-p.png"><a href="indexCustomer.html" class="brand-logo center">SwiftSales</a>
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li><a href="savedPromotions.html">Saved Promotions</a></li>
   <li class="active"><a href="indexCustomer.html">Mapview</a></li>
@@ -375,19 +375,19 @@ $(document).ready( function() {
                         var businessType = sale.bType;
                         var iconImg;
                         if (businessType=="Food"){
-                          iconImg='img/food-01.png';
+                          iconImg='img/food-02.png';
                         }
                         else if (businessType=="Market") {
-                          iconImg='img/market-01.png';
+                          iconImg='img/market-02.png';
                         }
                         else if (businessType=="Electronics") {
-                          iconImg='img/electronics-01.png';
+                          iconImg='img/electronics-02.png';
                         }
                         else if (businessType=="Cosmetics") {
-                          iconImg='img/cosmetics-01.png';
+                          iconImg='img/cosmetics-02.png';
                         }
                         else if (businessType=="Others") {
-                          iconImg='img/other-01.png';
+                          iconImg='img/other-02.png';
                         }
 
                         var marker = new google.maps.Marker({

@@ -26,6 +26,10 @@ DesignAtLarge/ixd-workshop-lost-and-found
       nav a:hover {
         color:rgb(39, 105, 182);
       }
+      #logo_b {
+        padding-top: 8px;
+        padding-right: 105px;
+      }
     </style>
     <body>
       <!--
@@ -60,7 +64,7 @@ DesignAtLarge/ixd-workshop-lost-and-found
 </div> -->
 <nav>
 <div class="nav-wrapper" style="float: top; background-color:rgb(177, 222, 250)">
-<a href="#" class="brand-logo center">SwiftSales</a>
+<img id="logo_b" src="img/logo-b.png"><a href="merchant.html" class="brand-logo center">SwiftSales</a>
 <ul id="nav-mobile" class="right hide-on-med-and-down">
   <li class="active"><a href="merchant.html">Mapview</a></li>
   <li><a href="merchantLog.html">Profile</a></li>
@@ -458,19 +462,19 @@ $(document).ready( function() {
                           var businessType = sale.bType;
                           var iconImg;
                           if (businessType=="Food"){
-                            iconImg='img/restaurants.png';
+                            iconImg='img/food-02.png';
                           }
                           else if (businessType=="Market") {
-                            iconImg='img/shopping.png';
+                            iconImg='img/market-02.png';
                           }
                           else if (businessType=="Electronics") {
-                            iconImg='img/computers.png';
+                            iconImg='img/electronics-02.png';
                           }
                           else if (businessType=="Cosmetics") {
-                            iconImg='img/clothings.png';
+                            iconImg='img/cosmetics-02.png';
                           }
                           else if (businessType=="Others") {
-                            iconImg='img/home-services.png';
+                            iconImg='img/other-02.png';
                           }
                         var newpos = {lat: sale.latitude, lng: sale.longitude};
                         var marker = new google.maps.Marker({
