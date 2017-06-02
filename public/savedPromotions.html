@@ -8,7 +8,8 @@
      <link rel="stylesheet" href="assets/css/style.css">
      <!--Let browser know website is optimized for mobile-->
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     <script src="js/jquery.js"></script>
+     <!-- <script src="js/jquery.js"></script> -->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
    </head>
     <style media="screen">
     .expired {
@@ -57,15 +58,23 @@
           </div> -->
 
           <script>
-            $(document).ready(function(){
-              $("#sp_List").append('<div class="card red lighten-5 mainContent" id="card1">'+
-              '<div class="card-content blue-grey-text text-darken-1">'+
-              '<span class="card-title">'+localStorage.getItem("p_Title")+'</span>'+
-              '<p>'+localStorage.getItem("p_Info")+'</p>'+'</div>'+
-              '<div class="card-action">'+'<a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>'+
-              '<a class="light-blue-text" id="removebtn1" href="#" style="float:right;">Remove</a>'+
-              '</div>'+'</div>');
-            });
+
+              var pArray = JSON.parse(localStorage.getItem("p_array"));
+              $.each(pArray, function(key, val) {
+                //  console.log('index in arr:' + key + ", corresponding value:" + val + ", content:"+ localStorage.getItem(val));
+                 $("#sp_List").append(localStorage.getItem(val)+'</p>'+'</div>'+
+                 '<div class="card-action">'+'<a class="light-blue-text text-lighten-3" href="#">Show me the direction</a>'+
+                 '<a class="light-blue-text removebtn1" href="#" style="float:right;">Remove</a>'+
+                 '</div>'+'</div>');
+               });
+
+               $(".removebtn1").click(function() {
+                   $(this).parent().siblings().hide(500);
+                   $(this).hide();
+                   $(this).siblings().hide();
+                   $(this).parent().hide();
+               });
+
           </script>
 
           <!-- <div class="card red lighten-5 mainContent" id="card2">
@@ -146,10 +155,13 @@
       </div>
 
        </div>
-       <script>
+       <!-- <script>
        $(document).ready( function() {
            $("#removebtn1").click(function() {
-               $("#card1").hide(500);
+               $(this).parent().siblings().hide(500);
+               $(this).hide();
+               $(this).siblings().hide();
+               $(this).parent().hide();
            });
            $("#removebtn2").click(function() {
                $("#card2").hide(500);
@@ -167,11 +179,11 @@
                $("#card6").hide(500);
            });
        });
-     </script>
-
-     <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+     </script> -->
+     <script src="js/index.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
      <script type="text/javascript" src="js/materialize.min.js"></script>
-     <script src="assets/js/jquery-1.11.1.min.js"></script>
-     <script src="js/saved.js"></script>
+     <!-- <script src="assets/js/jquery-1.11.1.min.js"></script> -->
+     <!-- <script src="js/saved.js"></script> -->
    </body>
  </html>

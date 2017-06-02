@@ -121,28 +121,46 @@ DesignAtLarge/ixd-workshop-lost-and-found
 //             return {'x':e.clientX,'y':e.clientY}
 //         }
 var click_number = 1;
+var idArray = new Array();
 // var saved_promotion;
 $(document).ready( function() {
+  var idArray = new Array();
   $("#pinkstar").hide();
     $("#load_home").on("click", function() {
         $("#content").load("itemBought.html");
     });
 
     $(".starbtn").click(function(){
-    $(this).toggleClass("likebtn");
-    if (click_number%2 != 0){
+    if ($(this).css("color")!="rgb(255, 192, 203)"){
+      $(this).css("color","pink");
       Materialize.toast('Added to your saved list!', 1000, 'pink lighten-3');
       var pInfo = $(this).parent().siblings("#promotionCell").html();
       var pTitle = $(this).prev().html();
-      console.log(pTitle);
-      // console.log(pInfo);
-      localStorage.setItem("p_Info", pInfo);
-      localStorage.setItem("p_Title", pTitle);
-      //console.log(localStorage.getItem("p_Info"));
+      var p_title = '<div class="card red lighten-5 mainContent" id="card1">'+
+      '<div class="card-content blue-grey-text text-darken-1">'+
+      '<span class="card-title">'+pTitle+'</span>'+
+      '<p>';
+      var pID = $(this).parent().siblings("#promotionCell").children("#uniqueID").html();
+      localStorage.setItem(pID, p_title+pInfo);
+      idArray.push(pID);
+      // $.each(idArray, function(key, val) {
+      //     console.log('index in arr:' + key + ", corresponding value:" + val + ", content:"+ localStorage.getItem(val));
+      //   });
+      // localStorage.setItem("p_array", JSON.stringify(idArray));
+      // console.log(JSON.parse(localStorage.getItem("p_array")).length);
     }
-    else if (click_number%2 == 0){
+    else if ($(this).css("color")=="rgb(255, 192, 203)"){
+      $(this).css("color","rgb(136,136,136)");
       Materialize.toast('Removed from your saved list!', 1000, 'grey lighten-1');
+      var removedID = $(this).parent().siblings("#promotionCell").children("#uniqueID").html();
+      for(var i=0;i<idArray.length;i++){
+      if(idArray[i]===removedID){
+          idArray.splice(i,1);
+          i--;
+          }
+        }
     }
+    localStorage.setItem("p_array", JSON.stringify(idArray));
     // saved_promotion = $((this).parent()).parent().html();
     //
     // addToSavedPromotion(saved_promotion);

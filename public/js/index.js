@@ -23,7 +23,7 @@ $(document).ready()
                             +'</br>&nbsp;<b>Promotion Location:</b>'+sale.loc
                             +'</br>&nbsp;<b>Promotion Details:</b>'+sale.des
                             +'</br>&nbsp;<b>Limitation of claiming:</b>'+sale.claim
-                            +'</br>&nbsp;<b>Expiration Time:</b>'+sale.time
+                            +'</br>&nbsp;<b>Expiration Time:</b>'+sale.time+'<a id="uniqueID">'+sale.id+'</a>'
                             +'</div></li>');
                       });
                   }
