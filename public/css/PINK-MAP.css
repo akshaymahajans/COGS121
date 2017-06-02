@@ -121,3 +121,18 @@ h4 {
 #uniqueID {
   display: none;;
 }
+#f_li:hover{
+    background-color: rgb(246, 178, 47);
+}
+#m_li:hover{
+    background-color: rgb(132, 247, 203);
+}
+#e_li:hover{
+    background-color: rgb(158, 208, 240);
+}
+#c_li:hover{
+    background-color: pink;
+}
+#o_li:hover{
+    background-color: rgb(226, 183, 246);
+}
