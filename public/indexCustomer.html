@@ -501,8 +501,14 @@ $(document).ready( function() {
           for(i=0; i<saleMarkers.length; i++){
               saleMarkers[i].setMap(saleMarkers[i].getMap() ? null : map);
           }
+          $("#collist #Market").show();
+          $("#collist #Cosmetics").show();
+          $("#collist #Electronics").show();
+          $("#collist #Others").show();
+          $("#collist #Food").show();
       }
-
+var filterTypes = new Array();
+var allTypes = ["#Food","#Market","#Cosmetics","#Electronics","#Others"];
       function filterMarkers(type)
       {
         if (filterNum == 0)
@@ -517,10 +523,26 @@ $(document).ready( function() {
               if (foodToggle > 0)
                 {
                   document.getElementById("f_li").style.backgroundColor = "#e2a7b9";
+                  filterTypes.push("#Food");
+                  // $("#collist #Food").show();
+                  // $("#collist #Cosmetics").hide();
+                  // $("#collist #Electronics").hide();
+                  // $("#collist #Others").hide();
                 }
                 else
                 {
-                  document.getElementById("f_li").style.backgroundColor = ""
+                  document.getElementById("f_li").style.backgroundColor = "";
+                  for(var i=0;i<filterTypes.length;i++){
+                  if(filterTypes[i]==="#Food"){
+                      filterTypes.splice(i,1);
+                      i--;
+                      }
+          };
+                  // $("#collist #Food").hide();
+                  // $("#collist #Market").show();
+                  // $("#collist #Cosmetics").show();
+                  // $("#collist #Electronics").show();
+                  // $("#collist #Others").show();
                 }
           }
 
@@ -537,10 +559,19 @@ $(document).ready( function() {
           if (marketToggle > 0)
           {
             document.getElementById("m_li").style.backgroundColor = "#e2a7b9";
+            filterTypes.push("#Market");
+            // $("#collist #Market").show();
           }
           else
           {
-            document.getElementById("m_li").style.backgroundColor = ""
+            document.getElementById("m_li").style.backgroundColor = "";
+            for(var i=0;i<filterTypes.length;i++){
+            if(filterTypes[i]==="#Market"){
+                filterTypes.splice(i,1);
+                i--;
+                }
+    };
+            // $("#collist #Market").hide();
           }
 
           marketToggle = (marketToggle > 0 ? -1 : 1);
@@ -556,10 +587,19 @@ $(document).ready( function() {
           if (electronicToggle > 0)
           {
             document.getElementById("e_li").style.backgroundColor = "#e2a7b9";
+            // $("#collist #Electronics").show();
+            filterTypes.push("#Electronics");
           }
           else
           {
-            document.getElementById("e_li").style.backgroundColor = ""
+            document.getElementById("e_li").style.backgroundColor = "";
+            // $("#collist #Electronics").hide();
+            for(var i=0;i<filterTypes.length;i++){
+            if(filterTypes[i]==="#Electronics"){
+                filterTypes.splice(i,1);
+                i--;
+                }
+    };
           }
 
           electronicToggle = (electronicToggle > 0 ? -1 : 1);
@@ -575,10 +615,19 @@ $(document).ready( function() {
           if (cosmeticToggle > 0)
           {
             document.getElementById("c_li").style.backgroundColor = "#e2a7b9";
+            // $("#collist #Cosmetics").show();
+            filterTypes.push("#Cosmetics");
           }
           else
           {
-            document.getElementById("c_li").style.backgroundColor = ""
+            document.getElementById("c_li").style.backgroundColor = "";
+            // $("#collist #Cosmetics").hide();
+            for(var i=0;i<filterTypes.length;i++){
+            if(filterTypes[i]==="#Cosmetics"){
+                filterTypes.splice(i,1);
+                i--;
+                }
+    };
           }
 
           cosmeticToggle = (cosmeticToggle > 0 ? -1 : 1);
@@ -595,10 +644,19 @@ $(document).ready( function() {
           if (otherToggle > 0)
           {
             document.getElementById("o_li").style.backgroundColor = "#e2a7b9";
+            // $("#collist #Others").show();
+            filterTypes.push("#Others");
           }
           else
           {
-            document.getElementById("o_li").style.backgroundColor = ""
+            document.getElementById("o_li").style.backgroundColor = "";
+            // $("#collist #Others").hide();
+            for(var i=0;i<filterTypes.length;i++){
+            if(filterTypes[i]==="#Others"){
+                filterTypes.splice(i,1);
+                i--;
+                }
+    };
           }
 
           otherToggle = (otherToggle > 0 ? -1 : 1);
@@ -608,9 +666,19 @@ $(document).ready( function() {
         if (filterNum == 0)
         {
           toggleAllMarkers();
-        }
-
+        };
+        if (filterNum != 0)
+        {
+          $.each(allTypes, function(key, val) {
+            console.log(val);
+            if (($.inArray(val, filterTypes)) == -1){
+            $("#collist "+val).hide();}
+            else {
+              $("#collist "+val).show();
+            }
+        });
       }
+    }
 
 
             function getGeoPosition(callback) {

@@ -16,7 +16,7 @@ $(document).ready()
                   success: function (data) {
                       data.forEach(function (sale) {
                         $("#collist").append(
-                            '<li><div class="collapsible-header"><i collapsiblelass="material-icons"></i>'
+                            '<li id="'+sale.bType+'">'+'<div class="collapsible-header"><i collapsiblelass="material-icons"></i>'
                             +'<b>'+sale.bName+'</b>'+
                             '<i class="material-icons starbtn"  style="float: right;">star</i></div><div id="promotionCell" class="collapsible-body">'
                             +'&nbsp;<b>Business Type:</b>'+sale.bType
